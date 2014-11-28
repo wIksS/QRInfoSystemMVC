@@ -1,4 +1,4 @@
-app.controller('RegisterCtrl', ['$scope', '$location', 'auth', 'identity', 'notifier','errorHandl er',
+app.controller('RegisterCtrl', ['$scope', '$location', 'auth', 'identity', 'notifier','errorHandler',
     function ($scope, $location, auth, identity, notifier,errorHandler) {
     $scope.register = function(user){
         auth.register(user)
