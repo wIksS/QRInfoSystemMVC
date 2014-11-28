@@ -1,0 +1,28 @@
+<div ng-controller="LoginCtrl">
+    <ul class="nav navbar-nav" ng-hide="!isLogged">
+        <li>
+            <a href="/#/Admin">Admin Panel</a>
+        </li>
+        <li><a href="/#/Admin/QRCodes">QR Codes</a></li>
+    </ul>
+    <ul ng-hide="!isLogged" class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/#/details">Hello, {{username}}</a>
+        </li>
+        <li>
+            <a class="btn btn-default" ng-click="logout()">Logout</a>
+        </li>
+    </ul>
+    <ul ng-hide="isLogged" class="nav navbar-nav navbar-right">
+        <li>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" required="" placeholder="Username" ng-model="user.username">
+                    <input type="password" class="form-control" required="" placeholder="Password" ng-model="user.password">
+                </div>
+                <button ng-click="login(user)" class="btn btn-default">Admin Panel</button>
+                <a href="/#/register" class="btn-default btn">Register</a>
+            </form>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRInfoSystem.Web", "QRInfoSystem\QRInfoSystem.Web.csproj", "{45C36C21-3808-4AC4-812D-C2CD2D2F626F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRInfoSystem.Data", "QRInfoSystem.Data\QRInfoSystem.Data.csproj", "{0933BCC2-568F-4BE8-809B-785BCBB026E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRInfoSystem.Models", "QRInfoSystem.Models\QRInfoSystem.Models.csproj", "{E2F26267-A1CE-4B77-840D-5EC600D3B328}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45C36C21-3808-4AC4-812D-C2CD2D2F626F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C36C21-3808-4AC4-812D-C2CD2D2F626F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C36C21-3808-4AC4-812D-C2CD2D2F626F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C36C21-3808-4AC4-812D-C2CD2D2F626F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0933BCC2-568F-4BE8-809B-785BCBB026E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0933BCC2-568F-4BE8-809B-785BCBB026E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0933BCC2-568F-4BE8-809B-785BCBB026E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0933BCC2-568F-4BE8-809B-785BCBB026E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F26267-A1CE-4B77-840D-5EC600D3B328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F26267-A1CE-4B77-840D-5EC600D3B328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F26267-A1CE-4B77-840D-5EC600D3B328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F26267-A1CE-4B77-840D-5EC600D3B328}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
