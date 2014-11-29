@@ -1,5 +1,4 @@
 ﻿using QRInfoSystem.Models;
-using QRInfoSystem.Web.Infrastructure.Mapping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +7,7 @@ using System.Web;
 
 namespace QRInfoSystem.Web.ViewModels
 {
-    public class TeacherViewModel : IMapFrom<Teacher>
+    public class TeacherViewModel 
     {
         public int Id { get; set; }
 

@@ -4,11 +4,8 @@
     using QRInfoSystem.Models;
     using System.Web.Http;
     using System.Web.Http.Description;
-
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     using QRInfoSystem.Web.ViewModels;
-
+    using System.Linq;
     public class TeachersController : BaseController
     {
         public TeachersController(IQRInfoSystemData data)
@@ -25,7 +22,15 @@
                 return BadRequest(ModelState);
             }
 
-            var newTeacher = Mapper.Map<Teacher>(teacher);        
+            var newTeacher = new Teacher()
+                {
+                    Email = teacher.Email,
+                    FirstName = teacher.FirstName,
+                    Id = teacher.Id,
+                    LastName = teacher.LastName,
+                    Phone = teacher.Phone,
+                    Title = teacher.Title
+                };        
 
             this.data.Teachers.Add(newTeacher);
             this.data.Teachers.SaveChanges();
@@ -38,9 +43,8 @@
         public IHttpActionResult GetTeachers()
         {
             var teachers = data.Teachers
-                            .All()
-                            .Project()
-                            .To<TeacherViewModel>();
+                                    .All()    
+                                    .ToList();
 
             return Ok(teachers);
         }
@@ -67,7 +71,15 @@
                 return NotFound();
             }
 
-            var mappedTeacher = Mapper.Map<TeacherViewModel>(teacher);
+            var mappedTeacher = new TeacherViewModel()
+            {
+                Email = teacher.Email,
+                FirstName = teacher.FirstName,
+                Id = teacher.Id,
+                LastName = teacher.LastName,
+                Phone = teacher.Phone,
+                Title = teacher.Title
+            };
 
             return Ok(mappedTeacher);
         }

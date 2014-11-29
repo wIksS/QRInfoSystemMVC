@@ -10,30 +10,36 @@
     using System.Net.Http;
     using System.Web.Http;
 
-    using AutoMapper;
-    using AutoMapper.QueryableExtensions;
     public class SheduleController : BaseController
     {
         public SheduleController(IQRInfoSystemData data)
-            :base(data)
+            : base(data)
         {
         }
 
         [HttpGet]
-        public IHttpActionResult GetShedules(int id,string code)
+        public IHttpActionResult GetShedules(int id, string code)
         {
             var isLogged = User.Identity.IsAuthenticated;
-            if (isLogged && code =="admin") {
+            if (isLogged && code == "admin")
+            {
                 var newShedules = data.Shedules
                                         .All()
                                         .Where(s => s.TeacherId == id)
-                                        .Project()
-                                        .To<SheduleViewModel>()
+                                        .Select(s => new SheduleViewModel()
+                                        {
+                                            EndDate = s.EndDate,
+                                            StartDate = s.StartDate,
+                                            RoomName = s.Room.Model,
+                                            TeacherId = s.TeacherId,
+                                            Id = s.Id
+                                        })
                                         .ToList();
 
                 return Ok(newShedules);
             }
-            if(code != "frompc"){
+            if (code != "frompc")
+            {
                 Guid guidCode = Guid.Parse(code);
                 var qrcode = data.QRCodes.All().FirstOrDefault(q => q.Code == guidCode);
                 if (qrcode == null)
@@ -45,8 +51,14 @@
             var shedules = data.Shedules
                                 .All()
                                 .Where(s => s.TeacherId == id)
-                                .Project()
-                                .To<SheduleViewModel>()
+                                        .Select(s => new SheduleViewModel()
+                                        {
+                                            EndDate = s.EndDate,
+                                            StartDate = s.StartDate,
+                                            RoomName = s.Room.Model,
+                                            TeacherId = s.TeacherId,
+                                            Id = s.Id
+                                        })
                                 .ToList();
 
             return Ok(shedules);
@@ -76,17 +88,23 @@
                 data.Rooms.SaveChanges();
             }
 
-            var shedule = Mapper.Map<Shedule>(model);
+            var shedule = new Shedule()
+                {
+                    EndDate = model.EndDate,
+                    Id = model.Id,
+                    StartDate = model.StartDate,
+                    TeacherId = model.TeacherId
+                }; 
             shedule.Room = room;
 
             if (shedule.StartDate >= shedule.EndDate)
             {
                 return BadRequest("Start date must be before end date");
             }
-          
+
             data.Shedules.Add(shedule);
             data.Shedules.SaveChanges();
-         //   teacher.Shedules.Add(shedule);
+            //   teacher.Shedules.Add(shedule);
             data.Teachers.SaveChanges();
 
             return Ok(shedule);

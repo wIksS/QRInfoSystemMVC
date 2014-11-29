@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using QRInfoSystem.Data;
+﻿using QRInfoSystem.Data;
 using QRInfoSystem.Models;
 using QRInfoSystem.Web.ViewModels;
 using QRInfoSystem.Web.ViewModels;
@@ -41,7 +40,11 @@ namespace QRInfoSystem.Web.Controllers
             var dbCode = teacher.QRCodes.FirstOrDefault();
             if(dbCode != null)
             {
-                var code = Mapper.Map<QRCodeViewModel>(dbCode);
+                var code = new QRCodeViewModel()
+                    {
+                        Code = dbCode.Code,
+                        TeacherId = dbCode.TeacherId
+                    };
                 return Ok(code);
             }
 

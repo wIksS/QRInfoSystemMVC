@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using QRInfoSystem.Web.Infrastructure.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +14,6 @@ namespace QRInfoSystem.Web
     {
         protected void Application_Start()
         {
-            var autoMapperConfig = new AutoMapperConfig();
-            autoMapperConfig.Execute();
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
