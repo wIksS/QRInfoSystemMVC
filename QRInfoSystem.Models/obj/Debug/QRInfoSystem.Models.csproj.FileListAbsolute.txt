@@ -30,3 +30,19 @@ C:\Users\Виктор\Desktop\DjonAtanasov\QRInfoSystem - Copy\QRInfoSystem.Mode
 C:\Users\Виктор\Desktop\DjonAtanasov\QRInfoSystem - Copy\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.csprojResolveAssemblyReference.cache
 C:\Users\Виктор\Desktop\DjonAtanasov\QRInfoSystem - Copy\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.dll
 C:\Users\Виктор\Desktop\DjonAtanasov\QRInfoSystem - Copy\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.pdb
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\QRInfoSystem.Models.dll.config
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\QRInfoSystem.Models.dll
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\QRInfoSystem.Models.pdb
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\EntityFramework.dll
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\EntityFramework.xml
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.csprojResolveAssemblyReference.cache
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.dll
+C:\Users\Виктор\Desktop\QRInfoSystemMVC\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.pdb
