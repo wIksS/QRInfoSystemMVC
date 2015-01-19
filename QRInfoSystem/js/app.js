@@ -29,4 +29,4 @@ var app = angular.module('QRInfoApp', ['ngRoute'])
             })
     }])
     .value('toastr', toastr)
-    .constant('baseUrl', '/');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');
+    .constant('baseUrl', 'http://qrinfo.apphb.com/');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');
