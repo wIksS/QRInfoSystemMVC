@@ -29,5 +29,20 @@ app.factory('auth', ['$http','$q','baseUrl','httpRequester','objectToQueryString
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             });
         },
+        getUserRoles: function (user) {
+            var deffered = q.defer();
+            user = user || {};
+            user['grant_type'] = 'password';
+
+            return httpRequester.request({
+                method: 'GET',
+                url: url + '/api/account/Role',
+                data: objectToQueryString.parse(user),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': 'Bearer ' + user.token
+                }
+            });
+        }
     }
 }])

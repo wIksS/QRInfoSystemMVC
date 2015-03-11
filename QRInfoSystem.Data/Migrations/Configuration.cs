@@ -1,5 +1,8 @@
 namespace QRInfoSystem.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using QRInfoSystem.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,18 +18,27 @@ namespace QRInfoSystem.Data.Migrations
 
         protected override void Seed(QRInfoSystem.Data.QRInfoSystemDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (!context.Roles.Any(r => r.Name == "Admin") ||
+                !context.Roles.Any(r => r.Name == "Teacher"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var roleAdmin = new IdentityRole { Name = "Admin" };
+                var roleTeacher = new IdentityRole { Name = "Teacher" };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                manager.Create(roleAdmin);
+                manager.Create(roleTeacher);
+            }
+
+            if (!context.Users.Any(u => u.UserName == "Admin"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser { UserName = "Admin",Email = "Admin" };
+
+                manager.Create(user, "123456!");
+                manager.AddToRole(user.Id, "Admin");
+            }
         }
     }
 }

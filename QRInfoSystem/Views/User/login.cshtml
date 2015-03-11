@@ -1,6 +1,6 @@
 <div ng-controller="LoginCtrl">
     <ul class="nav navbar-nav" ng-hide="!isLogged">
-        <li>
+        <li ng-hide="!isAdmin">
             <a href="/#/Admin">Admin Panel</a>
         </li>
         <li><a href="/#/Admin/QRCodes">QR Codes</a></li>

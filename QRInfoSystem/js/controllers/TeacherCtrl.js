@@ -7,9 +7,11 @@
 app.controller('TeacherCtrl', ['$scope', '$location', 'auth', 'identity', 'baseUrl', 'notifier', 'teacherService', 'currentTeacher', 'qrcodeService','errorHandler',
     function ($scope, $location, auth, identity, baseUrl, notifier, teacherService, currentTeacher, qrcodeService, errorHandler) {
     $scope.isLogged = identity.isLogged();
+    $scope.isAdmin = identity.isAdmin();
 
     $scope.$on('$routeChangeStart', function (next, current) {
         $scope.isLogged = identity.isLogged();
+        $scope.isAdmin = identity.isAdmin();
     });
 
     teacherService.getTeachers()
@@ -23,6 +25,7 @@ app.controller('TeacherCtrl', ['$scope', '$location', 'auth', 'identity', 'baseU
         $location.path('/teachers/' + id);
     }
     $scope.isLogged = identity.isLogged();
+    $scope.isAdmin = identity.isAdmin();
 
     $scope.delete = function (id) {
         var user = identity.getUser();

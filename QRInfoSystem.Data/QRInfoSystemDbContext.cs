@@ -24,7 +24,7 @@ namespace QRInfoSystem.Data
 
         IDbSet<Shedule> Shedules { get; set; }
 
-        IDbSet<QRCode> QRCodes { get; set; }
+        IDbSet<QRCode> QRCodes { get; set; }       
 
         IDbSet<ApplicationUser> Users { get; set; }
 

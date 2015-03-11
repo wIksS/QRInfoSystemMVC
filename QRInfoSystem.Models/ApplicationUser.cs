@@ -18,5 +18,7 @@ namespace QRInfoSystem.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        //public virtual IList<IdentityRole> Roles { get; set; }       
     }
 }

@@ -14,6 +14,11 @@ namespace QRInfoSystem.Web.Controllers
             return View();
         }
 
+        public ActionResult HomeLogin()
+        {
+            return View();
+        }
+
         public ActionResult Register()
         {
             return View();

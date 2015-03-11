@@ -4,12 +4,15 @@
 app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity', 'notifier', 'teacherService', 'qrcodeService', 'baseUrl', 'currentTeacher','errorHandler',
     function ($scope, $location, auth, identity, notifier, teacherService, qrcodeService, baseUrl, currentTeacher, errorHandler) {
     $scope.isLogged = identity.isLogged();
+    $scope.isAdmin = identity.isAdmin();
     if (!$scope.isLogged) {
         //$location.path('/unauthorized');
     }
-
+    debugger;
     $scope.$on('$routeChangeStart', function (next, current) {
+        debugger;
         $scope.isLogged = identity.isLogged();
+        $scope.isAdmin = identity.isAdmin();
     });
 
 

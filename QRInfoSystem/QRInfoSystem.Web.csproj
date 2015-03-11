@@ -216,6 +216,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Account\RoleViewModel.cs" />
     <Compile Include="ViewModels\Teacher\QRCodeViewModel.cs" />
     <Compile Include="ViewModels\Teacher\SheduleViewModel.cs" />
     <Compile Include="ViewModels\Teacher\TeacherViewModel.cs" />
@@ -1147,6 +1148,7 @@
     <None Include="Views\Administration\adminpanel.cshtml" />
     <Content Include="Views\Administration\teachersCodes.cshtml" />
     <None Include="Views\Home\home.cshtml" />
+    <Content Include="Views\User\homeLogin.cshtml" />
     <None Include="Views\User\login.cshtml" />
     <None Include="Views\Administration\qrcode.cshtml" />
     <None Include="Views\User\register.cshtml" />

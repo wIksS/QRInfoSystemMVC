@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
@@ -17,6 +18,7 @@ using QRInfoSystem.Web.Models;
 using QRInfoSystem.Web.Providers;
 using QRInfoSystem.Web.Results;
 using QRInfoSystem.Models;
+using QRInfoSystem.ViewModels.Account;
 
 namespace QRInfoSystem.Web.Controllers
 {
@@ -51,6 +53,33 @@ namespace QRInfoSystem.Web.Controllers
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
+
+        [HttpPost]
+        [Authorize(Roles="Admin")]
+        [Route("Role")]
+        public IHttpActionResult AddRole(string roleName)
+        {
+            if (!string.IsNullOrWhiteSpace(roleName))
+            {
+                ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.Id == User.Identity.GetUserId());
+                this.UserManager.AddToRole(user.Id, roleName);
+
+                return Ok("Role created successfully !");
+            }
+
+            return BadRequest();
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("Role")]
+        public ICollection<string> GetRoles()
+        {
+            var userId = User.Identity.GetUserId();
+            ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.Id == userId);
+
+            return this.UserManager.GetRoles(userId);
+        }
 
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]

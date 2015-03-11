@@ -1,7 +1,6 @@
 ﻿using QRInfoSystem.Data;
 using QRInfoSystem.Models;
 using QRInfoSystem.Web.ViewModels;
-using QRInfoSystem.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

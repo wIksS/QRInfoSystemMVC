@@ -4,6 +4,8 @@
 app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'identity', 'notifier', 'teacherService', 'currentTeacher','errorHandler',
     function ($scope, $location, $routeParams, auth, identity, notifier, teacherService, currentTeacher,errorHandler) {
     $scope.isLogged = identity.isLogged();
+    $scope.isAdmin = identity.isAdmin();
+
     if (!$scope.isLogged) {
         //$location.path('/unauthorized');
     }

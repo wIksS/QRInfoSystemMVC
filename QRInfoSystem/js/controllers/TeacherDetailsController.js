@@ -3,9 +3,11 @@
  */
 app.controller('TeacherDetailsCtrl',['$scope','$location','$routeParams','auth','identity','notifier','teacherService', function($scope,$location,$routeParams,auth,identity,notifier,teacherService) {
     $scope.isLogged = identity.isLogged();
+    $scope.isAdmin = identity.isAdmin();
 
     $scope.$on('$routeChangeStart', function (next, current) {
         $scope.isLogged = identity.isLogged();
+        $scope.isAdmin = identity.isAdmin();
     });
 
     teacherService.getTeacherDetails({id:$routeParams.id,qrcode:$routeParams.qrcode})
