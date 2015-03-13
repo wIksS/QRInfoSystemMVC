@@ -19,6 +19,6 @@ namespace QRInfoSystem.Models
             return userIdentity;
         }
 
-        //public virtual IList<IdentityRole> Roles { get; set; }       
+        //public IList<string> UserRoles { get; set; }       
     }
 }

@@ -19,22 +19,25 @@ using QRInfoSystem.Web.Providers;
 using QRInfoSystem.Web.Results;
 using QRInfoSystem.Models;
 using QRInfoSystem.ViewModels.Account;
+using QRInfoSystem.Data;
 
 namespace QRInfoSystem.Web.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : BaseController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController(IQRInfoSystemData data)
+            : base(data)
         {
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat, IQRInfoSystemData data)
+            : base(data)
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
@@ -54,20 +57,72 @@ namespace QRInfoSystem.Web.Controllers
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
-        [HttpPost]
-        [Authorize(Roles="Admin")]
-        [Route("Role")]
-        public IHttpActionResult AddRole(string roleName)
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("Users")]
+        public IHttpActionResult GetAllUsers()
         {
-            if (!string.IsNullOrWhiteSpace(roleName))
+            var usersViewModel = new List<UserViewModel>();
+            foreach (var user in this.Data.Users.All().ToList())
             {
-                ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.Id == User.Identity.GetUserId());
-                this.UserManager.AddToRole(user.Id, roleName);
+                if (user.Id != User.Identity.GetUserId())
+                {
+                    usersViewModel.Add(new UserViewModel()
+                        {
+                            UserName = user.UserName,
+                            Roles = this.UserManager.GetRoles(user.Id)
+                        });
+                }
+            }
+            return Ok(usersViewModel);
+        }
 
-                return Ok("Role created successfully !");
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route("DeleteUser")]
+        public IHttpActionResult DeleteUser(string userName)
+        {
+            ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.UserName == userName);
+            if (user == null)
+            {
+                return BadRequest();
             }
 
-            return BadRequest();
+            this.UserManager.Delete(user);
+
+            return Ok("Successfuly deleted user !");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [Route("AddRole")]
+        public IHttpActionResult AddRole(string userName, string roleName)
+        {
+            ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.UserName == userName);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            this.UserManager.AddToRole(user.Id, roleName);
+
+            return Ok("Role created successfully !");
+        }
+
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route("DeleteRole")]
+        public IHttpActionResult DeleteRole(string userName, string roleName)
+        {
+            ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.UserName == userName);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            this.UserManager.RemoveFromRole(user.Id, roleName);
+
+            return Ok("Role deleted successfully !");
         }
 
         [HttpGet]
@@ -77,6 +132,10 @@ namespace QRInfoSystem.Web.Controllers
         {
             var userId = User.Identity.GetUserId();
             ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.Id == userId);
+            if (user == null)
+            {
+                return null;
+            }
 
             return this.UserManager.GetRoles(userId);
         }
@@ -155,7 +214,7 @@ namespace QRInfoSystem.Web.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -288,9 +347,9 @@ namespace QRInfoSystem.Web.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -398,7 +457,7 @@ namespace QRInfoSystem.Web.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

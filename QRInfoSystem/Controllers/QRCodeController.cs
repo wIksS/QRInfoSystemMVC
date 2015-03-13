@@ -24,8 +24,8 @@ namespace QRInfoSystem.Web.Controllers
             QRCode code = new QRCode();
             code.TeacherId = id;
 
-            data.QRCodes.Add(code);
-            data.QRCodes.SaveChanges();
+            Data.QRCodes.Add(code);
+            Data.QRCodes.SaveChanges();
 
             return Ok(code);
         }
@@ -34,7 +34,7 @@ namespace QRInfoSystem.Web.Controllers
         [HttpGet]
         public IHttpActionResult GetQRCode(int id)
         {
-            var teacher = this.data.Teachers.Find(id);
+            var teacher = this.Data.Teachers.Find(id);
 
             var dbCode = teacher.QRCodes.FirstOrDefault();
             if(dbCode != null)

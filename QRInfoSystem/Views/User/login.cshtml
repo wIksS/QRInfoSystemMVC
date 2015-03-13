@@ -3,7 +3,12 @@
         <li ng-hide="!isAdmin">
             <a href="/#/Admin">Admin Panel</a>
         </li>
-        <li><a href="/#/Admin/QRCodes">QR Codes</a></li>
+        <li>
+            <a href="/#/Admin/QRCodes">QR Codes</a>
+        </li>
+        <li ng-hide="!isAdmin">
+            <a href="/#/Admin/Users">Users</a>
+        </li>
     </ul>
     <ul ng-hide="!isLogged" class="nav navbar-nav navbar-right">
         <li>

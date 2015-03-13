@@ -10,11 +10,11 @@ namespace QRInfoSystem.Web.Controllers
 {
     public class BaseController : ApiController
     {
-        protected IQRInfoSystemData data;
-
         public BaseController(IQRInfoSystemData data)
         {
-            this.data = data;
+            this.Data = data;
         }
+
+        protected IQRInfoSystemData Data { get; set; }
     }
 }

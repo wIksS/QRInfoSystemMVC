@@ -23,10 +23,14 @@ var app = angular.module('QRInfoApp', ['ngRoute'])
                 templateUrl: 'administration/teachersCodes',
                 controller: 'LoginCtrl'
             }).
+            when('/Admin/Users', {
+                templateUrl: 'administration/users',
+                controller: 'UsersCtrl'
+            }).
             when('/Admin', {
                 templateUrl: 'administration/adminpanel',
                 controller: 'LoginCtrl'
             })
     }])
     .value('toastr', toastr)
-    .constant('baseUrl', 'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');
+    .constant('baseUrl', 'http://qrinfo.apphb.com');//'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');

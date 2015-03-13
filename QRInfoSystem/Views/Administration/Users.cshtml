@@ -1,0 +1,34 @@
+﻿<div class="table-container">
+    <h2>Users</h2>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Admin</th>
+                <th>Teacher</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{user.UserName}} </td>
+                <td>                    
+                    <span ng-if="user.isAdmin" class="glyphicon glyphicon-ok" ng-click="deleteRole(user,'Admin')"></span>
+                    <span ng-if="!user.isAdmin" class="glyphicon glyphicon-remove" ng-click="addRole(user,'Admin')"></span>
+                </td>
+                <td>
+                    <span ng-if="user.isTeacher" class="glyphicon glyphicon-ok" ng-click="deleteRole(user,'Teacher')"></span>
+                    <span ng-if="!user.isTeacher" class="glyphicon glyphicon-remove" ng-click="addRole(user,'Teacher')"></span>
+                </td>
+                <td>
+                    <button class="btn btn-primary" ng-click="deleteUser(user)">Delete</button>
+                </td>
+            </tr>
+            <tr ng-if="users.length == 0">
+                <td colspan="3">
+                    <h1>No users registered !</h1>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

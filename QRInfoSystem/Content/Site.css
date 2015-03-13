@@ -251,3 +251,11 @@ td.text-right {
 input.ng-invalid.ng-dirty{
     border:1px solid red
 }
+
+.glyphicon-ok{
+    color:green;
+}
+
+.glyphicon-remove{
+    color:red;
+}

@@ -6,8 +6,14 @@ using System.Web.Mvc;
 
 namespace QRInfoSystem.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class AdministrationController : Controller
     {
+        public ActionResult Users()
+        {
+            return View();
+        }
+
         public ActionResult QRCode()
         {
             return View();

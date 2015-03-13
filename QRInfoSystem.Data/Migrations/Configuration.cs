@@ -36,7 +36,7 @@ namespace QRInfoSystem.Data.Migrations
                 var manager = new UserManager<ApplicationUser>(store);
                 var user = new ApplicationUser { UserName = "Admin",Email = "Admin" };
 
-                manager.Create(user, "123456!");
+                manager.Create(user, "123456");
                 manager.AddToRole(user.Id, "Admin");
             }
         }

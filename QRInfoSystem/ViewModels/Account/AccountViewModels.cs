@@ -1,9 +1,17 @@
-﻿using System;
+﻿using QRInfoSystem.ViewModels.Account;
+using System;
 using System.Collections.Generic;
 
 namespace QRInfoSystem.Web.Models
 {
     // Models returned by AccountController actions.
+
+    public class UserViewModel
+    {
+        public string UserName { get; set; }
+
+        public ICollection<String> Roles { get; set; }
+    }
 
     public class ExternalLoginViewModel
     {

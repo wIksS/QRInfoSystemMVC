@@ -31,9 +31,9 @@
                     Phone = teacher.Phone,
                     Title = teacher.Title
                 };        
-
-            this.data.Teachers.Add(newTeacher);
-            this.data.Teachers.SaveChanges();
+                
+            this.Data.Teachers.Add(newTeacher);
+            this.Data.Teachers.SaveChanges();
 
             return Ok(newTeacher);
         }
@@ -42,7 +42,7 @@
         [HttpGet]
         public IHttpActionResult GetTeachers()
         {
-            var teachers = data.Teachers
+            var teachers = Data.Teachers
                                     .All()    
                                     .ToList();
 
@@ -53,8 +53,8 @@
         [Authorize]
         public IHttpActionResult Delete(int id)
         {
-            data.Teachers.Delete(id);
-            data.Teachers.SaveChanges();
+            Data.Teachers.Delete(id);
+            Data.Teachers.SaveChanges();
 
             return Ok();
         }
@@ -63,7 +63,7 @@
         [ResponseType(typeof(Teacher))]
         public IHttpActionResult GetTeacher(int id)
         {
-            Teacher teacher = data.Teachers.Find(id);
+            Teacher teacher = Data.Teachers.Find(id);
            // Guid quidCode = Guid.Parse(code);
          //   var qrcode = data.QRCodes.All().FirstOrDefault(q => q.Code == quidCode);
             if (teacher == null)

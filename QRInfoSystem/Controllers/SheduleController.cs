@@ -23,7 +23,7 @@
             var isLogged = User.Identity.IsAuthenticated;
             if (isLogged && code == "admin")
             {
-                var newShedules = data.Shedules
+                var newShedules = Data.Shedules
                                         .All()
                                         .Where(s => s.TeacherId == id)
                                         .Select(s => new SheduleViewModel()
@@ -41,14 +41,14 @@
             if (code != "frompc")
             {
                 Guid guidCode = Guid.Parse(code);
-                var qrcode = data.QRCodes.All().FirstOrDefault(q => q.Code == guidCode);
+                var qrcode = Data.QRCodes.All().FirstOrDefault(q => q.Code == guidCode);
                 if (qrcode == null)
                 {
                     return NotFound();
                 }
             }
 
-            var shedules = data.Shedules
+            var shedules = Data.Shedules
                                 .All()
                                 .Where(s => s.TeacherId == id)
                                         .Select(s => new SheduleViewModel()
@@ -73,19 +73,19 @@
                 return BadRequest(ModelState);
             }
 
-            Teacher teacher = data.Teachers.Find(model.TeacherId);
+            Teacher teacher = Data.Teachers.Find(model.TeacherId);
             if (teacher == null)
             {
                 return NotFound();
             }
 
-            var room = data.Rooms.Find(model.RoomName);
+            var room = Data.Rooms.Find(model.RoomName);
             if (room == null)
             {
                 room = new Room();
                 room.Model = model.RoomName;
-                data.Rooms.Add(room);
-                data.Rooms.SaveChanges();
+                Data.Rooms.Add(room);
+                Data.Rooms.SaveChanges();
             }
 
             var shedule = new Shedule()
@@ -102,10 +102,10 @@
                 return BadRequest("Start date must be before end date");
             }
 
-            data.Shedules.Add(shedule);
-            data.Shedules.SaveChanges();
+            Data.Shedules.Add(shedule);
+            Data.Shedules.SaveChanges();
             //   teacher.Shedules.Add(shedule);
-            data.Teachers.SaveChanges();
+            Data.Teachers.SaveChanges();
 
             return Ok(shedule);
         }
