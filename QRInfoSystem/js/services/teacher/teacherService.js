@@ -21,6 +21,16 @@ app.factory('teacherService',['$http','$q','baseUrl','httpRequester','objectToQu
                 }
             });
         },
+        update: function (teacher) {
+            return httpRequester.request({
+                method: 'PUT',
+                url: url + '/teachers',
+                data: teacher,
+                headers: {
+                    'Authorization': 'Bearer ' + teacher.identity
+                }
+            });
+        },
         deleteTeacher: function (teacher) {
             return httpRequester.request({
                 method: 'DELETE',
@@ -47,6 +57,16 @@ app.factory('teacherService',['$http','$q','baseUrl','httpRequester','objectToQu
                 }
             });
         },
+        uploadImage: function (data,teacher) {
+            return httpRequester.request({
+                method: 'POST',
+                url: url + '/Images/UploadTeacherImage?teacherId=' + teacher.Id,
+                data: data,
+                headers: {
+                    'Authorization': 'Bearer ' + teacher.identity
+                }
+            });
+        },
         getTeacherShedule: function (input) {
             return httpRequester.request({
                 method: 'GET',
@@ -61,6 +81,15 @@ app.factory('teacherService',['$http','$q','baseUrl','httpRequester','objectToQu
                     'Authorization': 'Bearer ' + input.identity
                 }
             });
-        },        
+        },
+        getUserTeacher: function (input) {
+            return httpRequester.request({
+                method: 'GET',
+                url: url + '/account/GetUserTeacher',
+                headers: {
+                    'Authorization': 'Bearer ' + input.identity
+                }
+            });
+        }
     }
 }]);

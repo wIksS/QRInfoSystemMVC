@@ -259,3 +259,7 @@ input.ng-invalid.ng-dirty{
 .glyphicon-remove{
     color:red;
 }
+
+.teacher-container{
+    padding-right:0px
+}

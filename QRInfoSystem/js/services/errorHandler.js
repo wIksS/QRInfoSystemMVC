@@ -14,6 +14,9 @@
                 if(err.message){
                     notifier.error(err.message);
                 }
+                else if (err.Message) {
+                    notifier.error(err.Message);
+                }
                 else if (err.error_description) {
                     notifier.error(err.error_description);
                 }

@@ -1,9 +1,15 @@
 <div ng-controller="LoginCtrl">
     <ul class="nav navbar-nav" ng-hide="!isLogged">
+        <li ng-hide="!isTeacher">
+            <a href="/#/teacher/update">Upade your data</a>
+        </li>
+        <li ng-hide="!isTeacher">
+            <a href="/#/teacher/schedule">Upade your schedule</a>
+        </li>
         <li ng-hide="!isAdmin">
             <a href="/#/Admin">Admin Panel</a>
         </li>
-        <li>
+        <li ng-hide="!isAdmin">
             <a href="/#/Admin/QRCodes">QR Codes</a>
         </li>
         <li ng-hide="!isAdmin">

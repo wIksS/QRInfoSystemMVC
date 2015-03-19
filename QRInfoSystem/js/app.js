@@ -1,9 +1,21 @@
 'use strict';
 
-var app = angular.module('QRInfoApp', ['ngRoute'])
+var app = angular.module('QRInfoApp', ['ngRoute','angularFileUpload'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {
+                templateUrl: 'home/home',
+                controller: 'LoginCtrl'
+            }).
+            when('/teacher/update', {
+                templateUrl: 'teacher/TeacherRegister',
+                controller: 'TeacherCtrl'
+            }).
+            when('/teacher/schedule', {
+                templateUrl: 'teacher/schedule',
+                controller: 'TeacherCtrl'
+            }).
+            when('/teachers', {
                 templateUrl: 'home/home',
                 controller: 'LoginCtrl'
             }).
@@ -33,4 +45,4 @@ var app = angular.module('QRInfoApp', ['ngRoute'])
             })
     }])
     .value('toastr', toastr)
-    .constant('baseUrl', 'http://qrinfo.apphb.com');//'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');
+    .constant('baseUrl', 'http://localhost:1763');//'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');

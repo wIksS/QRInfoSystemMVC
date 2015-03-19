@@ -32,6 +32,8 @@ namespace QRInfoSystem.Models
         [EmailAddress]
         public string Email { get; set; }
 
+        public string ImagePath { get; set; }
+
         //public virtual QRCode QRCode { get; set; }
 
         //public int QRCodeId { get; set; }

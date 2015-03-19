@@ -8,6 +8,8 @@ app.controller('TeacherCtrl', ['$scope', '$location', 'auth', 'identity', 'baseU
     function ($scope, $location, auth, identity, baseUrl, notifier, teacherService, currentTeacher, qrcodeService, errorHandler) {
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
+    $scope.unknownImagePath = '/Images/unknown.jpg';
+    $scope.teacher = currentTeacher.getSessionTeacher();
 
     $scope.$on('$routeChangeStart', function (next, current) {
         $scope.isLogged = identity.isLogged();

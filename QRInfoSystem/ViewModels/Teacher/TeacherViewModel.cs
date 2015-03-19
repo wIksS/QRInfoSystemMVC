@@ -30,5 +30,7 @@ namespace QRInfoSystem.Web.ViewModels
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

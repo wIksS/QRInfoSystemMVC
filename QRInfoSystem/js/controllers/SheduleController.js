@@ -5,6 +5,7 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
     function ($scope, $location, $routeParams, auth, identity, notifier, teacherService, currentTeacher,errorHandler) {
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
+    $scope.isTeacher = identity.isInRole('Teacher');
 
     if (!$scope.isLogged) {
         //$location.path('/unauthorized');
@@ -21,7 +22,7 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
     $('#to-hour-picker').change(function () {
         to = this.value;
     });
-
+        alert(5);
     $scope.updateShedule = function (shedule) {
         if (!$scope.sheduleForm.$valid) {
             notifier.error("Your data is invalid !");

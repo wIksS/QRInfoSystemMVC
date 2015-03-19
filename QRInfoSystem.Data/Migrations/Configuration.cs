@@ -30,11 +30,11 @@ namespace QRInfoSystem.Data.Migrations
                 manager.Create(roleTeacher);
             }
 
-            if (!context.Users.Any(u => u.UserName == "Admin"))
+            if (!context.Users.Any(u => u.UserName == "Admin@g.c"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "Admin",Email = "Admin" };
+                var user = new ApplicationUser { UserName = "Admin@g.c",Email = "Admin@g.c" };
 
                 manager.Create(user, "123456");
                 manager.AddToRole(user.Id, "Admin");

@@ -1,84 +1,21 @@
 ﻿<div class="admin">
     <div class="left" ng-controller="RegisterTeacherCtrl" ng-hide="!isAdmin">
-        <div class="col-lg-12 container" ng-hide="isRegistered">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6 register-form">
-                <div class="well bs-component teacher-register">
-                    <form class="form-horizontal" name="teacherForm">
-                        <fieldset>
-                            <legend>Register Teacher</legend>
-                            <div class="form-group">
-                                <label for="firstName" class="col-lg-3 control-label">First Name</label>
-                                <div class="col-lg-9">
-                                    <input type="text" required="" ng-minlength="3" ng-maxlength="20" ng-model="teacher.FirstName" class="form-control" id="firstName" placeholder="First Name">
-                                    <span ng-show="myForm.name.$error.required" class="help-inline">
-                                        Required
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName" class="col-lg-3 control-label">Last Name</label>
-                                <div class="col-lg-9">
-                                    <input type="text" required ng-minlength="3" ng-maxlength="20" ng-model="teacher.LastName" class="form-control" id="lastName" placeholder="Last Name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-lg-3 control-label">Email</label>
-                                <div class="col-lg-9">
-                                    <input type="email" required  ng-model="teacher.Email" class="form-control" id="email" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="title" class="col-lg-3 control-label">Title</label>
-                                <div class="col-lg-9">
-                                    <input type="text" required ng-minlength="3" ng-maxlength="20" ng-model="teacher.Title" class="form-control" id="title" placeholder="Title">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="col-lg-3 control-label">Phone</label>
-                                <div class="col-lg-9">
-                                    <input type="text" required ng-minlength="3" ng-maxlength="20" ng-model="teacher.Phone" class="form-control" id="phone" placeholder="Phone">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-10 col-lg-offset-2">
-                                    <button  type="submit" ng-click="register(teacher);" class="btn btn-primary">Register</button>
-                                    <button type="reset" class="btn btn-default">Cancel</button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
+        <div ng-include="'teacher/teacherregister'"></div>
+        <div ng-hide="!isRegistered">
+            @using (Html.BeginForm("UploadTeacherImage", "Teacher", FormMethod.Post,
+                                   new { enctype = "multipart/form-data" }))
+            {
+                <label for="file">Upload Image:</label>
+                <input type="file" name="file" id="file" style="width: 100%;" />
+                <input type="hidden" name="teacherId" value="{{getTeacherId()}}" />
+                <input type="submit" value="Upload" class="submit" />
+            }
         </div>
         <div class="qr" ng-hide="!isRegistered" ng-include="'Administration/qrcode'">
         </div>
     </div>
-    <div class="left" ng-controller="SheduleCtrl" ng-hide="!isAdmin">
-        <div class="col-lg-12 center">
-            <input type="text" class="form-control" placeholder="Select date " id="mydate" gldp-id="mydate" />
-        </div>
-        <div class="center">
-            <form class="form-horizontal" name="sheduleForm">
-                <div>
-                    <div class="from">
-                        <span>Room</span>
-                        <input type="number" ng-model="shedule.RoomName" required class="form-control shedule-input" placeholder="Room">
-                    </div>
-                    <div class="from">
-                        <span>From</span>
-                        <input type="text" class="form-control shedule-input" required id="from-hour-picker" placeholder="Select starting hour">
-                    </div>
-                    <div class="to">
-                        <span>To</span>
-                        <input type="text" id="to-hour-picker" required class="form-control shedule-input" placeholder="Select ending hour">
-                    </div>
-                    <div class="center">
-                        <button ng-click="updateShedule(shedule)" type="submit" class="btn-primary btn">Update shedule</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+    <div class="left" ng-hide="!isAdmin">
+        <div ng-include="'teacher/schedule'"></div>
     </div>
     <div class="left down" ng-controller="TeacherCtrl" ng-hide="!isAdmin">
         <div class="">

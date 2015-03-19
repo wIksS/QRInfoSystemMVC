@@ -74,6 +74,7 @@ namespace QRInfoSystem.Web.Controllers
                         });
                 }
             }
+
             return Ok(usersViewModel);
         }
 
@@ -99,12 +100,30 @@ namespace QRInfoSystem.Web.Controllers
         public IHttpActionResult AddRole(string userName, string roleName)
         {
             ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.UserName == userName);
+            ApplicationUser userDb = this.Data.Users.All().FirstOrDefault(u => u.UserName == userName);
+
             if (user == null)
             {
                 return BadRequest();
             }
 
-            this.UserManager.AddToRole(user.Id, roleName);
+            if (roleName == "Teacher")
+            {
+                var teacher = this.Data.Teachers.All().FirstOrDefault(t => t.Email == user.Email);
+                if (teacher == null)
+                {
+                    return BadRequest("Teacher not found. You need to register a teacher with email " + user.UserName + " in order to make this user a teacher!");
+                }
+
+                userDb.Teacher = teacher;
+                this.Data.Users.SaveChanges();
+
+                this.UserManager.AddToRole(user.Id, roleName);
+            }
+            else
+            {
+                this.UserManager.AddToRole(user.Id, roleName);
+            }
 
             return Ok("Role created successfully !");
         }
@@ -138,6 +157,21 @@ namespace QRInfoSystem.Web.Controllers
             }
 
             return this.UserManager.GetRoles(userId);
+        }
+
+        [HttpGet]
+        [Authorize(Roles="Teacher")]
+        [Route("GetUserTeacher")]
+        public IHttpActionResult GetUserTeacher()
+        {
+            var userId = User.Identity.GetUserId();
+            ApplicationUser user = this.Data.Users.All().FirstOrDefault(u => u.Id == userId);
+            if (user == null || user.Teacher == null)
+            {
+                return BadRequest("Server error");
+            }
+
+            return Ok(user.Teacher);
         }
 
         // GET api/Account/UserInfo

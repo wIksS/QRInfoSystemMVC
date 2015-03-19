@@ -6,18 +6,20 @@
     using System.Web.Http.Description;
     using QRInfoSystem.Web.ViewModels;
     using System.Linq;
+    using System.Web;
+    using System.IO;
     public class TeachersController : BaseController
     {
         public TeachersController(IQRInfoSystemData data)
             : base(data)
         {
         }
-
+        
         [HttpPost]
         [Authorize]
         public IHttpActionResult CreateTeacher(TeacherViewModel teacher)
         {
-            if(!this.ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -30,9 +32,34 @@
                     LastName = teacher.LastName,
                     Phone = teacher.Phone,
                     Title = teacher.Title
-                };        
-                
+                };
+
             this.Data.Teachers.Add(newTeacher);
+            this.Data.Teachers.SaveChanges();
+
+            return Ok(newTeacher);
+        }
+
+        [HttpPut]
+        [Authorize]
+        public IHttpActionResult UpdateTeacher(TeacherViewModel teacher)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var newTeacher = new Teacher()
+            {
+                Email = teacher.Email,
+                FirstName = teacher.FirstName,
+                Id = teacher.Id,
+                LastName = teacher.LastName,
+                Phone = teacher.Phone,
+                Title = teacher.Title
+            };
+
+            this.Data.Teachers.Update(newTeacher);
             this.Data.Teachers.SaveChanges();
 
             return Ok(newTeacher);
@@ -43,7 +70,7 @@
         public IHttpActionResult GetTeachers()
         {
             var teachers = Data.Teachers
-                                    .All()    
+                                    .All()
                                     .ToList();
 
             return Ok(teachers);
@@ -57,15 +84,15 @@
             Data.Teachers.SaveChanges();
 
             return Ok();
-        }
+        }        
 
         // GET: api/Teachers/5
         [ResponseType(typeof(Teacher))]
         public IHttpActionResult GetTeacher(int id)
         {
             Teacher teacher = Data.Teachers.Find(id);
-           // Guid quidCode = Guid.Parse(code);
-         //   var qrcode = data.QRCodes.All().FirstOrDefault(q => q.Code == quidCode);
+            // Guid quidCode = Guid.Parse(code);
+            //   var qrcode = data.QRCodes.All().FirstOrDefault(q => q.Code == quidCode);
             if (teacher == null)
             {
                 return NotFound();
@@ -78,11 +105,12 @@
                 Id = teacher.Id,
                 LastName = teacher.LastName,
                 Phone = teacher.Phone,
-                Title = teacher.Title
+                Title = teacher.Title,
+                ImagePath = teacher.ImagePath
             };
 
             return Ok(mappedTeacher);
         }
-    
+
     }
 }

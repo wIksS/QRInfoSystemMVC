@@ -8,6 +8,7 @@ app.controller('HomeCtrl',['$scope','$location','auth','identity','notifier', fu
     $scope.$on('$routeChangeStart', function (next, current) {
         $scope.isLogged = identity.isLogged();
         $scope.isAdmin = identity.isAdmin();
+        $scope.isTeacher = identity.isInRole('Teacher');
     });
 
 }]);

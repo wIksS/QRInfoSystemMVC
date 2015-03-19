@@ -10,7 +10,8 @@ namespace QRInfoSystem.Web
         {
             bundles.Add(new ScriptBundle("~/bundles/angular-lib").Include(
                         "~/Scripts/angular/angular.js",
-                        "~/Scripts/angular/angular-route.js"));
+                        "~/Scripts/angular/angular-route.js",
+                        "~/Scripts/angular-file-upload.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-ui").Include(
                         "~/Scripts/jquery/jquery-ui.js",

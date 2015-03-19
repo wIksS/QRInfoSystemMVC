@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\QRCodeController.cs" />
@@ -1152,6 +1153,7 @@
     <Content Include="Views\Administration\Users.cshtml" />
     <None Include="Views\Home\home.cshtml" />
     <Content Include="Views\User\homeLogin.cshtml" />
+    <Content Include="Views\Teacher\schedule.cshtml" />
     <None Include="Views\User\login.cshtml" />
     <None Include="Views\Administration\qrcode.cshtml" />
     <None Include="Views\User\register.cshtml" />

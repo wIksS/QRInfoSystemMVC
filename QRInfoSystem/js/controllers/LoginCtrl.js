@@ -2,18 +2,19 @@
  * Created by Виктор on 27.9.2014 г..
  */
 
-app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$location', 'teacherService','errorHandler',
-    function ($scope, auth, identity, notifier, $location, teacherService,errorHandler) {
+app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$location', 'teacherService','errorHandler','currentTeacher',
+    function ($scope, auth, identity, notifier, $location, teacherService,errorHandler,currentTeacher) {
     var user = identity.getUser();
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
-    $scope.pesho = 'gosho';
+    $scope.isTeacher = identity.isInRole('Teacher');
     $scope.user = $scope.user || {};
     $scope.username = user.username;
 
     $scope.$on('$routeChangeStart', function(next, current) { 
         $scope.isLogged = identity.isLogged();
         $scope.isAdmin = identity.isAdmin();
+        $scope.isTeacher = identity.isInRole('Teacher');
     });
 
     teacherService.getTeachers()
@@ -32,14 +33,22 @@ app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$locatio
             .then(function(data){
                 identity.loginUser(data)
                 .then(function (data) {
-                    debugger;
                     $scope.isLogged = identity.isLogged();
-                    $scope.pesho = 'pesho';
                     var user = identity.getUser();
                     $scope.username = user.username;
                     $scope.isAdmin = identity.isAdmin();
+                    $scope.isTeacher = identity.isInRole('Teacher');
+                    if ($scope.isTeacher) {
+                        teacherService.getUserTeacher({ identity: user.token })
+                            .then(function (data) {
+                                currentTeacher.setSessionTeacher(data);
+                            }, function (err) {
+                                errorHandler.handle(err);
+                            })
+                    }
+
                     notifier.success('Successful login !');
-                    $location.path('/Admin')
+                    $location.path('/teachers');
                 });               
             },
             function(err){
@@ -55,6 +64,7 @@ app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$locatio
         $scope.isAdmin = identity.isAdmin();
         $scope.user.username = '';
         $scope.user.password = '';
+        currentTeacher.removeSessionTeacher();
         notifier.success('Successful logout');
     }
 }]);
