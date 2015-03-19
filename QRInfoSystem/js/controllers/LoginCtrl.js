@@ -42,6 +42,7 @@ app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$locatio
                         teacherService.getUserTeacher({ identity: user.token })
                             .then(function (data) {
                                 currentTeacher.setSessionTeacher(data);
+                                currentTeacher.setTeacher(data);
                             }, function (err) {
                                 errorHandler.handle(err);
                             })
@@ -64,7 +65,7 @@ app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$locatio
         $scope.isAdmin = identity.isAdmin();
         $scope.user.username = '';
         $scope.user.password = '';
-        currentTeacher.removeSessionTeacher();
+        currentTeacher.deleteSessionTeacher();
         notifier.success('Successful logout');
     }
 }]);

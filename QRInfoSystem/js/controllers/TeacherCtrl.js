@@ -4,8 +4,8 @@
 /**
  * Created by Виктор on 2.10.2014 г..
  */
-app.controller('TeacherCtrl', ['$scope', '$location', 'auth', 'identity', 'baseUrl', 'notifier', 'teacherService', 'currentTeacher', 'qrcodeService','errorHandler',
-    function ($scope, $location, auth, identity, baseUrl, notifier, teacherService, currentTeacher, qrcodeService, errorHandler) {
+app.controller('TeacherCtrl', ['$scope','$rootScope', '$location', 'auth', 'identity', 'baseUrl', 'notifier', 'teacherService', 'currentTeacher', 'qrcodeService','errorHandler',
+    function ($scope, $rootScope,$location, auth, identity, baseUrl, notifier, teacherService, currentTeacher, qrcodeService, errorHandler) {
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
     $scope.unknownImagePath = '/Images/unknown.jpg';
@@ -45,6 +45,7 @@ app.controller('TeacherCtrl', ['$scope', '$location', 'auth', 'identity', 'baseU
         teacherService.getTeacherSheduleAdmin({ id: teacher.Id, identity: user.token })
             .then(function (data) {
                 currentTeacher.setTeacher(teacher);
+                $rootScope.teacher = teacher;
                 $scope.shedule = [];
                 for(var i =0;i<data.length;i++){
                     $scope.shedule.push({

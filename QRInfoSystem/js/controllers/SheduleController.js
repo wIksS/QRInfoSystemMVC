@@ -22,7 +22,6 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
     $('#to-hour-picker').change(function () {
         to = this.value;
     });
-        alert(5);
     $scope.updateShedule = function (shedule) {
         if (!$scope.sheduleForm.$valid) {
             notifier.error("Your data is invalid !");
