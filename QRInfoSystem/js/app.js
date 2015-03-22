@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('QRInfoApp', ['ngRoute','angularFileUpload'])
+var app = angular.module('QRInfoApp', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {
@@ -42,7 +42,11 @@ var app = angular.module('QRInfoApp', ['ngRoute','angularFileUpload'])
             when('/Admin', {
                 templateUrl: 'administration/adminpanel',
                 controller: 'LoginCtrl'
-            })
+            }).
+            when('/Excel/:id', {
+                templateUrl: 'Excel',
+                controller: 'AdminCtrl'
+            })                        
     }])
     .value('toastr', toastr)
     .constant('baseUrl', 'http://localhost:1763');//'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');

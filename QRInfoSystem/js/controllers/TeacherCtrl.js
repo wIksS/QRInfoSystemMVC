@@ -96,4 +96,8 @@ app.controller('TeacherCtrl', ['$scope','$rootScope', '$location', 'auth', 'iden
                 errorHandler.handle(err);
             })
     }
+
+    $scope.redirectToExcel = function (teacherId) {
+        $location.path('/Excel/' + teacherId);
+    }
 }]);

@@ -11,4 +11,7 @@ app.controller('HomeCtrl',['$scope','$location','auth','identity','notifier', fu
         $scope.isTeacher = identity.isInRole('Teacher');
     });
 
+    $scope.getId = function () {
+
+    }
 }]);

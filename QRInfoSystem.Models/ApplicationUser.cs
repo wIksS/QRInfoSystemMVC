@@ -22,5 +22,7 @@ namespace QRInfoSystem.Models
         //public IList<string> UserRoles { get; set; }       
 
         public virtual Teacher Teacher { get; set; }
+
+        public int? TeacherId { get; set; }
     }
 }

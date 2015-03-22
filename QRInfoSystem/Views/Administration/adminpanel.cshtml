@@ -1,18 +1,22 @@
 ﻿<div class="admin">
     <div class="left" ng-controller="RegisterTeacherCtrl" ng-hide="!isAdmin">
         <div ng-include="'teacher/teacherregister'"></div>
-        <div ng-hide="!isRegistered">
+        <div ng-hide="!isRegistered" class="register-form">
             @using (Html.BeginForm("UploadTeacherImage", "Teacher", FormMethod.Post,
                                    new { enctype = "multipart/form-data" }))
             {
-                <label for="file">Upload Image:</label>
-                <input type="file" name="file" id="file" style="width: 100%;" />
-                <input type="hidden" name="teacherId" value="{{getTeacherId()}}" />
-                <input type="submit" value="Upload" class="submit" />
+                <label for="file" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> Insert Image Here
+                </label>
+                <input id="file" name="file" type="file" />
+                    <input type="hidden" name="teacherId" value="{{getTeacherId()}}" />
+                <br />
+                <input type="submit" value="Upload" class="submit btn btn-primary" />
             }
+            <div class="qr" ng-hide="!isRegistered" ng-include="'Administration/qrcode'">
+            </div>
         </div>
-        <div class="qr" ng-hide="!isRegistered" ng-include="'Administration/qrcode'">
-        </div>
+
     </div>
     <div class="left" ng-hide="!isAdmin">
         <div ng-include="'teacher/schedule'"></div>
@@ -26,6 +30,7 @@
                         <th>Email</th>
                         <th>Phone number</th>
                         <th>Title</th>
+                        <th>Excel</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -35,6 +40,7 @@
                         <td>{{teacher.Email}}</td>
                         <td>{{teacher.Phone}}</td>
                         <td>{{teacher.Title}}</td>
+                        <td style="text-align:center" ng-click="redirectToExcel(teacher.Id)"><img src="/Images/excel.jpg" width="30px" /></td>
                         <td><button ng-click="delete(teacher.Id)" class="btn btn-default">Delete</button></td>
                     </tr>
                     <tr ng-if="drivers.length == 0">

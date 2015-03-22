@@ -19,26 +19,6 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
             $scope.isTeacher = identity.isInRole('Teacher');
         });
 
-        $scope.uploadImage = function () {
-            var f = document.getElementById('file').files[0],
-            r = new FileReader();
-            r.onloadend = function (e) {
-                var teacher = currentTeacher.getTeacher();
-                var data = e.target.result;
-                teacher.identity = $scope.user.token;
-
-                teacherService.uploadImage({ "file": data }, teacher)
-                    .then(function (data) {
-                        alert(data);
-                    }, function (err) {
-                        errorHandler.handle(err);
-                    });
-                //send you binary data via $http or $resource or do anything else with it
-            }
-
-            r.readAsArrayBuffer(f);
-        }
-
         $scope.getTeacherId = function () {
             return currentTeacher.getTeacher().Id;
         }
@@ -97,7 +77,6 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
             teacherService.register(teacher)
                 .then(function (data) {
                     notifier.success("Successfuly registered teacher");
-                    $scope.isRegistered = true;
                     currentTeacher.setTeacher(data);
                     var input = { identity: user.token, id: data.Id };
                     qrcodeService.generateQRCode(input);

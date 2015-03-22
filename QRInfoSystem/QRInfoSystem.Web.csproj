@@ -201,6 +201,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ExcelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -232,6 +233,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="js\app.js" />
+    <Content Include="js\controllers\AdminCtrl.js" />
     <Content Include="js\controllers\HomeCtrl.js" />
     <Content Include="js\controllers\LoginCtrl.js" />
     <Content Include="js\controllers\RegisterCtrl.js" />
@@ -1151,6 +1153,7 @@
     <None Include="Views\Administration\adminpanel.cshtml" />
     <Content Include="Views\Administration\teachersCodes.cshtml" />
     <Content Include="Views\Administration\Users.cshtml" />
+    <Content Include="Views\Excel\Index.cshtml" />
     <None Include="Views\Home\home.cshtml" />
     <Content Include="Views\User\homeLogin.cshtml" />
     <Content Include="Views\Teacher\schedule.cshtml" />

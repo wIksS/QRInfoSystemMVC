@@ -44,7 +44,7 @@ namespace QRInfoSystem.Controllers
             return View();
         }
 
-        public ActionResult UploadTeacherImage(HttpPostedFileBase file, int? teacherId)
+        public RedirectResult UploadTeacherImage(HttpPostedFileBase file, int? teacherId)
         {
             if (file != null && teacherId != null)
             {
@@ -59,7 +59,7 @@ namespace QRInfoSystem.Controllers
                 Data.Teachers.SaveChanges();
             }
 
-            return RedirectToAction("AdminPanel", "Administration");
+            return RedirectPermanent("/#/Admin");
         }
     }
 }
