@@ -232,12 +232,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\excel.jpg" />
+    <Content Include="Images\favicon22.ico" />
+    <Content Include="Images\unknown.jpg" />
     <Content Include="js\app.js" />
     <Content Include="js\controllers\AdminCtrl.js" />
     <Content Include="js\controllers\HomeCtrl.js" />
@@ -1153,6 +1157,7 @@
     <Content Include="Scripts\calendar\fullcalendar-2.1.1\demos\php\utils.php" />
     <Content Include="Scripts\glDatePicker\README.md" />
     <Content Include="Scripts\toastr\toastr.min.js.map" />
+    <Content Include="Content\Schedule.xlsx" />
     <None Include="Scripts\_references.js" />
     <Content Include="Scripts\toastr\toastr.js" />
     <Content Include="Scripts\toastr\toastr.min.js" />
