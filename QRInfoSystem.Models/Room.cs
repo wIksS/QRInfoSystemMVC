@@ -9,6 +9,16 @@ namespace QRInfoSystem.Models
 {
     public class Room
     {
+        public Room()
+        {
+
+        }
+
+        public Room(string model)
+        {
+            this.Model = model;
+        }
+
         [Key]
         public string Model { get; set; }        
     }

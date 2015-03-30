@@ -11,6 +11,6 @@ C:\Users\Виктор\Desktop\НОИТ\QRInfoSystem.Models\bin\Debug\EntityFrame
 C:\Users\Виктор\Desktop\НОИТ\QRInfoSystem.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Виктор\Desktop\НОИТ\QRInfoSystem.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Виктор\Desktop\НОИТ\QRInfoSystem.Models\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Виктор\Desktop\НОИТ\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.csprojResolveAssemblyReference.cache
 C:\Users\Виктор\Desktop\НОИТ\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.dll
 C:\Users\Виктор\Desktop\НОИТ\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.pdb
-C:\Users\Виктор\Desktop\НОИТ\QRInfoSystem.Models\obj\Debug\QRInfoSystem.Models.csprojResolveAssemblyReference.cache
