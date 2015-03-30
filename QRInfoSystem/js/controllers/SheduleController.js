@@ -6,6 +6,7 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
     $scope.isTeacher = identity.isInRole('Teacher');
+    $scope.id = $routeParams.id;
 
     if (!$scope.isLogged) {
         //$location.path('/unauthorized');
@@ -53,12 +54,19 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
             });
     }
 
-    $('#mydate').glDatePicker({
-        onClick: function (target, cell, date, data) {
-            $scope.year = date.getFullYear() + '-' +
-                ((date.getMonth() | 0) + 1) + '-' +
-                date.getDate();
-        },
-        cssName:'flatwhite'
-    });
+    $scope.makeDatepicker = function (selector) {
+        $(selector).glDatePicker({
+            onClick: function (target, cell, date, data) {
+                var year = date.getFullYear() + '-' +
+                    ((date.getMonth() | 0) + 1) + '-' +
+                    date.getDate();
+                $scope.year = year;
+                target[0].value = year;
+                $scope.$apply();
+            },
+            cssName: 'flatwhite'
+        });
+    }
+
+    $scope.makeDatepicker('#mydate');
 }]);

@@ -32,7 +32,8 @@
                                             StartDate = s.StartDate,
                                             RoomName = s.Room.Model,
                                             TeacherId = s.TeacherId,
-                                            Id = s.Id
+                                            Id = s.Id,
+                                            Message = s.Message
                                         })
                                         .ToList();
 
@@ -57,7 +58,8 @@
                                             StartDate = s.StartDate,
                                             RoomName = s.Room.Model,
                                             TeacherId = s.TeacherId,
-                                            Id = s.Id
+                                            Id = s.Id,
+                                            Message = s.Message
                                         })
                                 .ToList();
 
@@ -82,8 +84,7 @@
             var room = Data.Rooms.Find(model.RoomName);
             if (room == null)
             {
-                room = new Room();
-                room.Model = model.RoomName;
+                room = new Room(model.RoomName);
                 Data.Rooms.Add(room);
                 Data.Rooms.SaveChanges();
             }
@@ -93,7 +94,8 @@
                     EndDate = model.EndDate,
                     Id = model.Id,
                     StartDate = model.StartDate,
-                    TeacherId = model.TeacherId
+                    TeacherId = model.TeacherId,
+                    Message = model.Message
                 }; 
             shedule.Room = room;
 

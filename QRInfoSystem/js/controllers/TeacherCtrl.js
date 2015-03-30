@@ -51,7 +51,7 @@ app.controller('TeacherCtrl', ['$scope','$rootScope', '$location', 'auth', 'iden
                     $scope.shedule.push({
                         start: data[i].StartDate,
                         end: data[i].EndDate,
-                        title:"Room : " + data[i].RoomName
+                        title:"Room : " + data[i].RoomName + " - " + data[i].Message
                     })
                 }
                 $('#calendar').fullCalendar({

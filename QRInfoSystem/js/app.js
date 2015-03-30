@@ -45,7 +45,7 @@ var app = angular.module('QRInfoApp', ['ngRoute'])
             }).
             when('/Excel/:id', {
                 templateUrl: 'Excel',
-                controller: 'AdminCtrl'
+                controller: 'SheduleCtrl'
             })                        
     }])
     .value('toastr', toastr)

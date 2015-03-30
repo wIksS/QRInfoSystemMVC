@@ -5,17 +5,21 @@
     <div class="center">
         <form class="form-horizontal" name="sheduleForm">
             <div>
-                <div class="from">
-                    <span>Room</span>
-                    <input type="number" ng-model="shedule.RoomName" required class="form-control shedule-input" placeholder="Room">
+                <div class="from row">
+                    <span class="col-lg-5">Room</span>
+                    <input type="number" ng-model="shedule.RoomName" required class="form-control shedule-input col-lg-7" placeholder="Room">
                 </div>
-                <div class="from">
-                    <span>From</span>
-                    <input type="text" class="form-control shedule-input" required id="from-hour-picker" placeholder="Select starting hour">
+                <div class="from row">
+                    <span class="col-lg-5">From</span>
+                    <input type="text" class="form-control shedule-input col-lg-7" required id="from-hour-picker" placeholder="Select starting hour">
                 </div>
-                <div class="to">
-                    <span>To</span>
-                    <input type="text" id="to-hour-picker" required class="form-control shedule-input" placeholder="Select ending hour">
+                <div class="to row">
+                    <span class="col-lg-5">To</span>
+                    <input type="text" id="to-hour-picker" required class="form-control shedule-input col-lg-7" placeholder="Select ending hour">
+                </div>
+                <div class="from row">
+                    <span class="col-lg-5">Message</span>
+                    <textarea ng-model="shedule.Message" required class="form-control shedule-input col-lg-7" placeholder="Message"></textarea>
                 </div>
                 <div class="center">
                     <button ng-click="updateShedule(shedule)" type="submit" class="btn-primary btn">Update shedule</button>

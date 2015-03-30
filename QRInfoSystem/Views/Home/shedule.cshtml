@@ -1,6 +1,6 @@
 <div ng-controller="SheduleCtrl">
     <div class="col-lg-6">
-        <input type="text" class="form-control" placeholder="Select date " id="mydate" gldp-id="mydate" />
+        <input type="text" ng-init="makeDatepicker('#mydate')" class="form-control myDatePicker" placeholder="Select date " id="mydate" gldp-id="mydate" />
     </div>
     <div class="col-lg-6">
         <form class="form-horizontal">

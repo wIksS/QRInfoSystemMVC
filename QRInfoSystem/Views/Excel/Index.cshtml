@@ -2,6 +2,9 @@
     @using (Html.BeginForm("UploadExcel", "Excel", FormMethod.Post,
                                    new { enctype = "multipart/form-data" }))
     {
+        <input type="text" name="startDate" ng-init="makeDatepicker('#startDatePicker')" class="form-control fullPageDatePicker mydate" placeholder="Select date " id="startDatePicker" gldp-id="mydate" />
+        <input type="text" name="endDate" ng-init="makeDatepicker('#endDatePicker')" class="form-control fullPageDatePicker mydate" placeholder="Select date " id="endDatePicker" gldp-id="mydate2" />
+        <br />
         <label for="file" class="custom-file-upload">
             <i class="fa fa-cloud-upload"></i> Insert Excel Here
         </label>
@@ -9,5 +12,6 @@
         <input type="hidden" name="teacherId" value="{{id}}" />
         <br />
         <input type="submit" value="Upload Excel" class="submit btn btn-primary" />
+        <a href="~/Content/Schedule.xlsx" class="btn btn-default">Example excel</a>
     }
 </div>

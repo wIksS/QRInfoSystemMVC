@@ -21,5 +21,7 @@
         [StringLength(4,MinimumLength=4)]
         [Required]
         public string RoomName { get; set; }
+
+        public string Message { get; set; }
     }
 }
