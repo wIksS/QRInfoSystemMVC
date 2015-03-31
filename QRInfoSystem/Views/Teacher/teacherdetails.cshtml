@@ -1,6 +1,12 @@
-<div class="table-containerl">
-    <h1>{{teacher.Title}} {{teacher.FirstName}} {{teacher.LastName}}</h1>
-    <h2>Phone : {{teacher.Phone}}</h2>
-    <h2>Email : {{teacher.Email}}</h2>
+<div class="rw">
+    <div class="col-lg-2">
+        <img ng-src="{{teacher.ImagePath}}" width="150px" height="150px" ng-if="teacher.ImagePath" />
+        <img src="/images/unknown.jpg" width="150px" height="150px" ng-if="!teacher.ImagePath" />
+    </div>
+    <div class="col-lg-10">
+        <h1>{{teacher.Title}} {{teacher.FirstName}} {{teacher.LastName}}</h1>
+        <h2>Phone : {{teacher.Phone}}</h2>
+        <h2>Email : {{teacher.Email}}</h2>
+    </div>
 </div>
 <div id="calendar"></div>

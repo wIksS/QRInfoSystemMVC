@@ -12,11 +12,13 @@ namespace QRInfoSystem.Models
     {
         private ICollection<QRCode> qrCodes;
         private ICollection<Shedule> shedules;
+        private ICollection<ApplicationUser> subscribedUsers;
 
         public Teacher()
         {
             this.Shedules = new HashSet<Shedule>();
             this.QRCodes = new HashSet<QRCode>();
+            this.SubscribedUsers = new HashSet<ApplicationUser>();
         }
 
         public int Id { get; set; }
@@ -50,6 +52,13 @@ namespace QRInfoSystem.Models
         {
             get { return this.qrCodes; }
             set { this.qrCodes = value; }
+        }
+
+        [JsonIgnore]
+        public virtual ICollection<ApplicationUser> SubscribedUsers
+        {
+            get { return this.subscribedUsers; }
+            set { this.subscribedUsers = value; }
         }
     }
 }
