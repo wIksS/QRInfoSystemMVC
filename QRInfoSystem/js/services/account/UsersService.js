@@ -47,6 +47,18 @@ app.factory('usersService', ['$http', '$q', 'baseUrl', 'httpRequester', 'objectT
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             });
+        },
+        subscribeUser: function (teacherId, identity) {
+            var data = { teacherId: teacherId};
+            return httpRequester.request({
+                method: 'PUT',
+                url: url + '/account/SubscribeUser?' + objectToQueryString.parse(data),
+                headers: {
+                    'Authorization': 'Bearer ' + identity,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
         }
     }
+
 }]);

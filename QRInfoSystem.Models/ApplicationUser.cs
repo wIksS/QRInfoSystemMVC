@@ -30,7 +30,7 @@ namespace QRInfoSystem.Models
 
         public virtual Teacher Teacher { get; set; }
 
-        //public int? TeacherId { get; set; }
+        public int? TeacherId { get; set; }
 
         public virtual ICollection<Teacher> SubscribedTeachers
         {

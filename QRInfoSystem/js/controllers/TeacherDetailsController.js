@@ -1,7 +1,8 @@
 /**
  * Created by Виктор on 2.10.2014 г..
  */
-app.controller('TeacherDetailsCtrl',['$scope','$location','$routeParams','auth','identity','notifier','teacherService', function($scope,$location,$routeParams,auth,identity,notifier,teacherService) {
+app.controller('TeacherDetailsCtrl', ['$scope', '$location', '$routeParams', 'auth', 'identity', 'notifier', 'teacherService','usersService','errorHandler',
+        function ($scope, $location, $routeParams, auth, identity, notifier, teacherService, usersService, errorHandler) {
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
 
@@ -15,7 +16,7 @@ app.controller('TeacherDetailsCtrl',['$scope','$location','$routeParams','auth',
             console.log(data);
             $scope.teacher = data;
         },function(err){
-            notifier.error(err.message);
+            errorHandler.handle(err);
         });
 
     var qrcode = $routeParams.qrcode || 'frompc';
@@ -48,4 +49,14 @@ app.controller('TeacherDetailsCtrl',['$scope','$location','$routeParams','auth',
         },function(err){
             errorHandler.handle(err);
         });
+
+    $scope.subscribe = function (teacherId) {
+        var user = identity.getUser();
+        usersService.subscribeUser(teacherId, user.token)
+            .then(function (data) {
+                notifier.success(data);
+            },function(err){
+                errorHandler.handle(err);
+            });
+    }
 }]);

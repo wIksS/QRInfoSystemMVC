@@ -94,6 +94,28 @@ namespace QRInfoSystem.Web.Controllers
             return Ok("Successfuly deleted user !");
         }
 
+        [HttpPut]
+        [Authorize]
+        [Route("SubscribeUser")]
+        public IHttpActionResult SubscribeUser(int teacherId)
+        {
+            var userId = User.Identity.GetUserId();
+            ApplicationUser user = Data.Users.Find(userId); 
+            Teacher teacher = Data.Teachers.Find(teacherId);
+
+            if (user == null || teacher == null)
+            {
+                return BadRequest("User or teacher is whrong !");
+            }
+
+            user.SubscribedTeachers.Add(teacher);
+            teacher.SubscribedUsers.Add(user);
+
+            Data.Teachers.SaveChanges();
+
+            return Ok("Successfuly subscribed for teacher - " + teacher.FirstName + " " + teacher.LastName);
+        }
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("AddRole")]
