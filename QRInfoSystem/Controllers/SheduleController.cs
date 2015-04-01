@@ -1,6 +1,7 @@
 ﻿namespace QRInfoSystem.Web.Controllers
 {
     using QRInfoSystem.Data;
+    using QRInfoSystem.Infrastructure;
     using QRInfoSystem.Models;
     using QRInfoSystem.Web.ViewModels;
     using System;
@@ -108,6 +109,11 @@
             Data.Shedules.SaveChanges();
             //   teacher.Shedules.Add(shedule);
             Data.Teachers.SaveChanges();
+
+            var emailsToSend = teacher.SubscribedUsers.Select(u => u.Email).ToList();
+            EmailSender.Send(emailsToSend,
+                String.Format("{0}'s schedule has been changed go to <b>{1}</b> to see the new schedule", teacher.FirstName + teacher.LastName, Constants.Url + "/#/teachers/" + teacher.Id),
+                String.Format("{0}'s schedule has been updated", teacher.FirstName + teacher.LastName));
 
             return Ok(shedule);
         }

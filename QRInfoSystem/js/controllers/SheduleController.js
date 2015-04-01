@@ -31,10 +31,12 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
 
         if (!$scope.year) {
             notifier.error('You must select day');
+            return;
         }
         var user = identity.getUser();
         if (!user.token) {
             notifier.error('You must be logged in to register teachers');
+            return;
         }
         shedule.identity = user.token;
         shedule.StartDate = $scope.year + ' ' + from;
@@ -42,6 +44,10 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
         var teacher = currentTeacher.getTeacher();
         if (!teacher || teacher == {}) {
             shedule.TeacherId = $routeParams.id;
+            if (!shedule.TeacherId) {
+                notifier.error('You must select a teacher');
+                return;
+            }
         }
         else {
             shedule.TeacherId = teacher.Id;

@@ -218,6 +218,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Constants.cs" />
+    <Compile Include="Infrastructure\EmailSender.cs" />
     <Compile Include="ViewModels\Account\AccountBindingModels.cs" />
     <Compile Include="ViewModels\Account\AccountViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
