@@ -308,3 +308,8 @@ input[type="file"] {
 .details-img{
     margin-left:15px
 }
+
+#admin-table td{
+    max-width:150px;
+    word-wrap: break-word;
+}

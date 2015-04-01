@@ -2,17 +2,7 @@
     <div class="left" ng-controller="RegisterTeacherCtrl" ng-hide="!isAdmin">
         <div ng-include="'teacher/teacherregister'"></div>
         <div ng-hide="!isRegistered" class="register-form">
-            @using (Html.BeginForm("UploadTeacherImage", "Teacher", FormMethod.Post,
-                                   new { enctype = "multipart/form-data" }))
-            {
-                <label for="file" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload"></i> Insert Image Here
-                </label>
-                <input id="file" name="file" type="file" />
-                    <input type="hidden" name="teacherId" value="{{getTeacherId()}}" />
-                <br />
-                <input type="submit" value="Upload" class="submit btn btn-primary" />
-            }
+            <div ng-include="'teacher/uploadImage'"></div>
             <div class="qr" ng-hide="!isRegistered" ng-include="'Administration/qrcode'">
             </div>
         </div>
@@ -23,9 +13,10 @@
     </div>
     <div class="left down" ng-controller="TeacherCtrl" ng-hide="!isAdmin">
         <div class="">
-            <table class="table table-striped table-hover ">
+            <table id="admin-table" class="table table-striped table-hover ">
                 <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Phone number</th>
@@ -36,6 +27,10 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="teacher in teachers" ng-click="getShedule(teacher);">
+                        <td ng-click="redirectToImageUpload(teacher.Id)">
+                            <img width="50px" height="50px" src="{{teacher.ImagePath}}" ng-if="!!teacher.ImagePath">
+                            <img width="50px" height="50px" src="/images/unknown.jpg" ng-if="!teacher.ImagePath">
+                        </td>
                         <td>{{teacher.FirstName}} {{teacher.LastName}}</td>
                         <td>{{teacher.Email}}</td>
                         <td>{{teacher.Phone}}</td>

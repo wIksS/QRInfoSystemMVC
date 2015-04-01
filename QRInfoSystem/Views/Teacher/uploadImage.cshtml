@@ -1,0 +1,13 @@
+﻿<div class="register-form">
+    @using (Html.BeginForm("UploadTeacherImage", "Teacher", FormMethod.Post,
+                                   new { enctype = "multipart/form-data" }))
+    {
+        <label for="file" class="custom-file-upload">
+            <i class="fa fa-cloud-upload"></i> Insert Image Here
+        </label>
+        <input id="file" name="file" type="file" />
+        <input type="hidden" name="teacherId" value="{{getTeacherId()}}" />
+        <br />
+        <input type="submit" value="Upload" class="submit btn btn-primary" />
+    }
+</div>  

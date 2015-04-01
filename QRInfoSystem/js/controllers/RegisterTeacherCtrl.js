@@ -1,8 +1,8 @@
 /**
  * Created by Виктор on 2.10.2014 г..
  */
-app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity', 'notifier', 'teacherService', 'qrcodeService', 'baseUrl', 'currentTeacher', 'errorHandler',
-    function ($scope, $location, auth, identity, notifier, teacherService, qrcodeService, baseUrl, currentTeacher, errorHandler) {
+app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity', 'notifier', 'teacherService', 'qrcodeService', 'baseUrl', 'currentTeacher', 'errorHandler','$routeParams',
+    function ($scope, $location, auth, identity, notifier, teacherService, qrcodeService, baseUrl, currentTeacher, errorHandler,$routeParams) {
         $scope.isLogged = identity.isLogged();
         $scope.isAdmin = identity.isAdmin();
         $scope.user = identity.getUser();
@@ -20,8 +20,11 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
         });
 
         $scope.getTeacherId = function () {
+            if ($routeParams.id) {
+                return $routeParams.id;
+            }
             return currentTeacher.getTeacher().Id;
-        }
+        }       
 
         $scope.update = function (teacher) {
             if ($scope.teacherForm && !$scope.teacherForm.$valid) {

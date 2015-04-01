@@ -41,8 +41,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button ng-hide="isUpdate" type="submit" ng-click="update(teacher);" class="btn btn-primary">Update</button>
-                            <button ng-hide="!isUpdate" type="submit" ng-click="register(teacher);" class="btn btn-primary">Register</button>
+                            <button ng-if="!isUpdate" ng- type="submit" ng-click="update(teacher);" class="btn btn-primary">Update</button>
+                            <button ng-if="isUpdate" type="submit" ng-click="register(teacher);" class="btn btn-primary">Register</button>
                             <button type="reset" class="btn btn-default">Cancel</button>
                         </div>
                     </div>

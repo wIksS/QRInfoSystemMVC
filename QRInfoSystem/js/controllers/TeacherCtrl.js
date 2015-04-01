@@ -100,4 +100,8 @@ app.controller('TeacherCtrl', ['$scope','$rootScope', '$location', 'auth', 'iden
     $scope.redirectToExcel = function (teacherId) {
         $location.path('/Excel/' + teacherId);
     }
+
+    $scope.redirectToImageUpload = function (teacherId) {
+        $location.path('/UploadImage/' + teacherId);
+    }
 }]);

@@ -190,7 +190,7 @@ namespace QRInfoSystem.Web.Controllers
             ApplicationUser user = this.Data.Users.All().FirstOrDefault(u => u.Id == userId);
             if (user == null || user.Teacher == null)
             {
-                return BadRequest("Server error");
+                return null;
             }
 
             return Ok(user.Teacher);

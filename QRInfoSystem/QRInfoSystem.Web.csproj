@@ -1188,6 +1188,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Shared\Index.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Teacher\uploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
