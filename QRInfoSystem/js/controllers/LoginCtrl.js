@@ -2,8 +2,8 @@
  * Created by Виктор on 27.9.2014 г..
  */
 
-app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$location', 'teacherService','errorHandler','currentTeacher',
-    function ($scope, auth, identity, notifier, $location, teacherService,errorHandler,currentTeacher) {
+app.controller('LoginCtrl', ['$scope', '$rootScope','auth', 'identity', 'notifier', '$location', 'teacherService','errorHandler','currentTeacher',
+    function ($scope, $rootScope, auth, identity, notifier, $location, teacherService,errorHandler,currentTeacher) {
     var user = identity.getUser();
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
@@ -20,17 +20,6 @@ app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$locatio
         $scope.user = $scope.user || {};
         $scope.username = user.username;
     });
-
-    teacherService.getTeachers()
-        .then(function (data) {
-            $scope.teachers = data;
-        }, function (err) {
-            errorHandler.handle(err);
-        });
-
-    $scope.showTeacher = function(id){
-        $location.path('/teachers/' + id);
-    };
 
     $scope.login = function(user){
         auth.login(user)
@@ -71,5 +60,14 @@ app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$locatio
         $scope.user.password = '';
         currentTeacher.deleteSessionTeacher();
         notifier.success('Successful logout');
+    }
+
+    $scope.goToSearchTeachers = function () {
+        var path = $location.path();
+        if (path != "/" && path != "/teachers") {
+            $location.path("/");
+        }
+
+        $rootScope.$broadcast("searchTeacher", { search: search.value });
     }
 }]);

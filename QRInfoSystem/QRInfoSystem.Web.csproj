@@ -254,6 +254,7 @@
     <Content Include="js\controllers\TeacherCtrl.js" />
     <Content Include="js\controllers\TeacherDetailsController.js" />
     <Content Include="js\controllers\UsersCtrl.js" />
+    <Content Include="js\directives\search.js" />
     <Content Include="js\services\account\auth.js" />
     <Content Include="js\services\account\identity.js" />
     <Content Include="js\services\account\usersService.js" />

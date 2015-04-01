@@ -1,7 +1,7 @@
-﻿<div class="table-container">
+﻿<div class="table-container" ng-controller="TeacherCtrl">
     <h2>Teachers</h2>
     <br><br>
-    <div class="teacher-container col-md-4" ng-repeat="teacher in teachers">
+    <div class="teacher-container col-md-4" ng-repeat="teacher in teachers | filter: searchFunc ">
         <div class=" container-fluid well span6">
             <div class="row-fluid">
                 <div class="span2">

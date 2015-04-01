@@ -2,6 +2,9 @@
     <div class="left" ng-controller="RegisterTeacherCtrl" ng-hide="!isAdmin">
         <div ng-include="'teacher/teacherregister'"></div>
         <div ng-hide="!isRegistered" class="register-form">
+            <div class="row text-left">
+                <button ng-click="isRegistered = false" class="btn btn-default">Back to teacher data</button>
+            </div>
             <div ng-include="'teacher/uploadImage'"></div>
             <div class="qr" ng-hide="!isRegistered" ng-include="'Administration/qrcode'">
             </div>

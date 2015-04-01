@@ -313,3 +313,7 @@ input[type="file"] {
     max-width:123px;
     word-wrap: break-word;
 }
+#search-container{
+    width:250px;
+    margin-top:10px;
+}

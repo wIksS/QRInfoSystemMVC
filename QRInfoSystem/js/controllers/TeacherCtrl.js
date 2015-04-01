@@ -10,11 +10,25 @@ app.controller('TeacherCtrl', ['$scope','$rootScope', '$location', 'auth', 'iden
     $scope.isAdmin = identity.isAdmin();
     $scope.unknownImagePath = '/Images/unknown.jpg';
     $scope.teacher = currentTeacher.getSessionTeacher();
-
+   
     $scope.$on('$routeChangeStart', function (next, current) {
         $scope.isLogged = identity.isLogged();
         $scope.isAdmin = identity.isAdmin();
     });
+
+    $rootScope.$on("searchTeacher", function (event, args) {
+        $scope.searchFilter = args.search;
+    });
+
+    $scope.searchFunc = function (item) {
+        if (!$scope.searchFilter
+            || item.FirstName.indexOf($scope.searchFilter) != -1
+            || item.LastName.indexOf($scope.searchFilter) != -1
+            || item.Email.indexOf($scope.searchFilter) != -1) {
+            return true;
+        }
+        return false;
+    };
 
     teacherService.getTeachers()
         .then(function (data) {

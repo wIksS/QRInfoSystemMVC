@@ -44,7 +44,7 @@
                         <div class="col-lg-10 col-lg-offset-2">
                             <button ng-if="isUpdate" type="submit" ng-click="update(teacher);" class="btn btn-primary">Submit</button>
                             <button ng-if="!isUpdate" type="submit" ng-click="register(teacher);" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-default">Cancel</button>
+                            <button type="reset" class="btn btn-default" ng-click="isUpdate = false">Cancel</button>
                         </div>
                     </div>
                 </fieldset>

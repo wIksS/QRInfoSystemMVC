@@ -10,7 +10,12 @@
     </thead>
     <tbody class="table-hover">
         <tr ng-repeat="teacher in teachers" ng-click="getShedule(teacher);">
-            <td class="text-left">{{teacher.FirstName}} {{teacher.LastName}}</td>
+            <td class="text-center">
+            {{teacher.FirstName}} {{teacher.LastName}}
+                <br />
+                <img width="120px" height="120px" src="{{teacher.ImagePath}}" ng-if="!!teacher.ImagePath" class="img-circle">
+                <img width="120px" height="120px" src="/images/unknown.jpg" ng-if="!teacher.ImagePath" class="img-circle">
+            </td>
             <td class="text-left">
                 <div id='qrcode{{teacher.Id}}' ng-init="generate(teacher.Id)"></div>
             </td>
