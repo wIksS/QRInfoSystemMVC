@@ -45,8 +45,9 @@ app.controller('TeacherCtrl', ['$scope','$rootScope', '$location', 'auth', 'iden
         teacherService.getTeacherSheduleAdmin({ id: teacher.Id, identity: user.token })
             .then(function (data) {
                 currentTeacher.setTeacher(teacher);
-                $rootScope.teacher = teacher;
+                $rootScope.$broadcast("updateTeacher", { teacher: teacher});
                 $scope.shedule = [];
+
                 for(var i =0;i<data.length;i++){
                     $scope.shedule.push({
                         start: data[i].StartDate,

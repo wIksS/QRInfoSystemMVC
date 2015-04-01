@@ -4,8 +4,8 @@
         <div class="well bs-component teacher-register">
             <form class="form-horizontal" name="teacherForm">
                 <fieldset>
-                    <legend ng-if="!isUpdate">Update Teacher</legend>
-                    <legend ng-if="isUpdate">Register Teacher</legend>
+                    <legend ng-hide="!isUpdate">Update Teacher</legend>
+                    <legend ng-hide="isUpdate">Register Teacher</legend>
                     <div class="form-group">
                         <label for="firstName" class="col-lg-3 control-label">First Name</label>
                         <div class="col-lg-9">
@@ -39,10 +39,11 @@
                             <input type="text" required ng-minlength="3" ng-maxlength="20" ng-model="teacher.Phone" class="form-control" id="phone" placeholder="Phone">
                         </div>
                     </div>
+                    <input type="hidden" ng-model="teacher.ImagePath"/>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button ng-if="!isUpdate" ng- type="submit" ng-click="update(teacher);" class="btn btn-primary">Update</button>
-                            <button ng-if="isUpdate" type="submit" ng-click="register(teacher);" class="btn btn-primary">Register</button>
+                            <button ng-if="isUpdate" type="submit" ng-click="update(teacher);" class="btn btn-primary">Submit</button>
+                            <button ng-if="!isUpdate" type="submit" ng-click="register(teacher);" class="btn btn-primary">Submit</button>
                             <button type="reset" class="btn btn-default">Cancel</button>
                         </div>
                     </div>

@@ -310,6 +310,6 @@ input[type="file"] {
 }
 
 #admin-table td{
-    max-width:150px;
+    max-width:123px;
     word-wrap: break-word;
 }

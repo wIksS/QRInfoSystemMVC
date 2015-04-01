@@ -8,13 +8,17 @@ app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$locatio
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
     $scope.isTeacher = identity.isInRole('Teacher');
-    $scope.user = $scope.user || {};
+    $scope.user = user || {};
     $scope.username = user.username;
 
-    $scope.$on('$routeChangeStart', function(next, current) { 
+    $scope.$on('$routeChangeStart', function (next, current) {
+        user = identity.getUser();
+
         $scope.isLogged = identity.isLogged();
         $scope.isAdmin = identity.isAdmin();
         $scope.isTeacher = identity.isInRole('Teacher');
+        $scope.user = $scope.user || {};
+        $scope.username = user.username;
     });
 
     teacherService.getTeachers()
@@ -58,7 +62,7 @@ app.controller('LoginCtrl', ['$scope', 'auth', 'identity', 'notifier', '$locatio
         };
 
     $scope.logout = function(){
-        $location.path('/');
+        $location.path('/Login');
         var user = identity.getUser();
         identity.logoutUser();
         $scope.isLogged = identity.isLogged();

@@ -56,7 +56,8 @@
                 Id = teacher.Id,
                 LastName = teacher.LastName,
                 Phone = teacher.Phone,
-                Title = teacher.Title
+                Title = teacher.Title,
+                ImagePath = teacher.ImagePath
             };
 
             this.Data.Teachers.Update(newTeacher);

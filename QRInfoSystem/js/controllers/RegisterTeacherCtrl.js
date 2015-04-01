@@ -8,7 +8,7 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
         $scope.user = identity.getUser();
         $scope.isTeacher = identity.isInRole('Teacher');
         $scope.isRegistered = false;
-        $scope.isUpdate = $location.path().indexOf('Admin') >= 0;
+        $scope.isUpdate = false;
 
         if (!$scope.isLogged) {
             //$location.path('/unauthorized');
@@ -17,6 +17,11 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
             $scope.isLogged = identity.isLogged();
             $scope.isAdmin = identity.isAdmin();
             $scope.isTeacher = identity.isInRole('Teacher');
+        });
+
+        $scope.$on("updateTeacher", function (event, args) {
+            $scope.isUpdate = true;
+            $scope.teacher = args.teacher;
         });
 
         $scope.getTeacherId = function () {
@@ -49,13 +54,15 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
                     currentTeacher.setTeacher(data);
                     var input = { identity: user.token, id: data.Id };
                     //qrcodeService.generateQRCode(input);
-                    $scope.isRegistered = true
-                    teacherService.getUserTeacher({ identity: user.token })
-                       .then(function (data) {
-                           currentTeacher.setSessionTeacher(data);
-                       }, function (err) {
-                           errorHandler.handle(err);
-                       })
+                    $scope.isRegistered = true;
+                    if ($scope.isTeacher) {
+                        teacherService.getUserTeacher({ identity: user.token })
+                      .then(function (data) {
+                          currentTeacher.setSessionTeacher(data);
+                      }, function (err) {
+                          errorHandler.handle(err);
+                      })
+                    }                   
                 }, function (err) {
                     errorHandler.handle(err);
                 });
