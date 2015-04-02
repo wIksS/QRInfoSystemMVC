@@ -8,7 +8,9 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
         $scope.user = identity.getUser();
         $scope.isTeacher = identity.isInRole('Teacher');
         $scope.isRegistered = false;
-        $scope.isUpdate = false;
+        $scope.isUpdate = $location.path().indexOf('Admin') == -1;
+        isInAdmin = !$scope.isUpdate;
+        $scope.teacher = currentTeacher.getSessionTeacher();
 
         if (!$scope.isLogged) {
             //$location.path('/unauthorized');
@@ -28,6 +30,11 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
             if ($routeParams.id) {
                 return $routeParams.id;
             }
+
+            if (!currentTeacher.getTeacher()) {
+                return;
+            }
+
             return currentTeacher.getTeacher().Id;
         }       
 
@@ -50,11 +57,13 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
             teacherService.update(teacher)
                 .then(function (data) {
                     notifier.success("Successfuly updated teacher");
-                    $scope.isRegistered = true;
                     currentTeacher.setTeacher(data);
                     var input = { identity: user.token, id: data.Id };
                     //qrcodeService.generateQRCode(input);
-                    $scope.isRegistered = true;
+                    if (isInAdmin) {
+                        $scope.isRegistered = true;
+                    }
+
                     if ($scope.isTeacher) {
                         teacherService.getUserTeacher({ identity: user.token })
                       .then(function (data) {

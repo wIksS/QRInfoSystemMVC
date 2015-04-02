@@ -43,14 +43,14 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
         shedule.EndDate = $scope.year + ' ' + to;
         var teacher = currentTeacher.getTeacher();
         if (!teacher || teacher == {}) {
-            shedule.TeacherId = $routeParams.id;
-            if (!shedule.TeacherId) {
-                notifier.error('You must select a teacher');
-                return;
-            }
+            teacher = currentTeacher.getSessionTeacher()
         }
-        else {
-            shedule.TeacherId = teacher.Id;
+
+        shedule.TeacherId = teacher.Id;
+        
+        if (!shedule.TeacherId) {
+            notifier.error('You must select a teacher');
+            return;
         }
         teacherService.updateShedule(shedule)
             .then(function (data) {

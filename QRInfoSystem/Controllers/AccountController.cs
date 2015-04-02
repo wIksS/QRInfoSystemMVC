@@ -100,7 +100,7 @@ namespace QRInfoSystem.Web.Controllers
         public IHttpActionResult SubscribeUser(int teacherId)
         {
             var userId = User.Identity.GetUserId();
-            ApplicationUser user = Data.Users.Find(userId); 
+            ApplicationUser user = Data.Users.Find(userId);
             Teacher teacher = Data.Teachers.Find(teacherId);
 
             if (user == null || teacher == null)
@@ -121,31 +121,28 @@ namespace QRInfoSystem.Web.Controllers
         [Route("AddRole")]
         public IHttpActionResult AddRole(string userName, string roleName)
         {
-            ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.UserName == userName);
             ApplicationUser userDb = this.Data.Users.All().FirstOrDefault(u => u.UserName == userName);
 
-            if (user == null)
+            if (userDb == null)
             {
                 return BadRequest();
             }
 
             if (roleName == "Teacher")
             {
-                var teacher = this.Data.Teachers.All().FirstOrDefault(t => t.Email == user.Email);
+                var teacher = this.Data.Teachers.All().FirstOrDefault(t => t.Email == userDb.Email);
                 if (teacher == null)
                 {
-                    return BadRequest("Teacher not found. You need to register a teacher with email " + user.UserName + " in order to make this user a teacher!");
+                    return BadRequest("Teacher not found. You need to register a teacher with email " + userDb.UserName + " in order to make this user a teacher!");
                 }
 
                 userDb.Teacher = teacher;
-                this.Data.Users.SaveChanges();
 
-                this.UserManager.AddToRole(user.Id, roleName);
+                this.Data.Users.SaveChanges();
             }
-            else
-            {
-                this.UserManager.AddToRole(user.Id, roleName);
-            }
+            
+            ApplicationUser user = this.UserManager.Users.FirstOrDefault(u => u.UserName == userName);
+            this.UserManager.AddToRole(user.Id, roleName);
 
             return Ok("Role created successfully !");
         }
@@ -182,7 +179,7 @@ namespace QRInfoSystem.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles="Teacher")]
+        [Authorize(Roles = "Teacher")]
         [Route("GetUserTeacher")]
         public IHttpActionResult GetUserTeacher()
         {
@@ -190,7 +187,7 @@ namespace QRInfoSystem.Web.Controllers
             ApplicationUser user = this.Data.Users.All().FirstOrDefault(u => u.Id == userId);
             if (user == null || user.Teacher == null)
             {
-                return null;
+                return BadRequest("No teacher for this user.");
             }
 
             return Ok(user.Teacher);

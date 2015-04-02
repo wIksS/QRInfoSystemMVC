@@ -13,11 +13,11 @@ var app = angular.module('QRInfoApp', ['ngRoute'])
             }).
             when('/teacher/update', {
                 templateUrl: 'teacher/TeacherRegister',
-                controller: 'TeacherCtrl'
+                controller: 'RegisterTeacherCtrl'
             }).
             when('/teacher/schedule', {
                 templateUrl: 'teacher/schedule',
-                controller: 'TeacherCtrl'
+                controller: 'SheduleCtrl'
             }).
             when('/teachers', {
                 templateUrl: 'home/home',

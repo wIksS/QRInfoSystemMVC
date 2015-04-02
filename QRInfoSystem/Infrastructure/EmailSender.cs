@@ -12,6 +12,11 @@ namespace QRInfoSystem.Infrastructure
     {
         public static void Send(ICollection<string> users, string body,string subject)
         {
+            if (users.Count == 0)
+            {
+                return;
+            }
+
             SmtpClient client = new SmtpClient();   
             client.Port = 587;
             client.Host = "smtp.gmail.com";
