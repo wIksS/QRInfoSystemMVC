@@ -75,4 +75,8 @@ app.controller('SheduleCtrl', ['$scope', '$location', '$routeParams', 'auth', 'i
     }
 
     $scope.makeDatepicker('#mydate');
+
+    $scope.$on('$viewContentLoaded', function () {
+        moveScrollToContent();
+    });
 }]);

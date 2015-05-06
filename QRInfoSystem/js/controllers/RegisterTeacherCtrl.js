@@ -124,4 +124,8 @@ app.controller('RegisterTeacherCtrl', ['$scope', '$location', 'auth', 'identity'
                 $scope.selectedFile = element.files[0];
             });
         };
+
+        $scope.$on('$viewContentLoaded', function () {
+            moveScrollToContent();
+        });
     }]);

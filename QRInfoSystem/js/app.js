@@ -7,15 +7,15 @@ var app = angular.module('QRInfoApp', ['ngRoute'])
                 templateUrl: 'home/home',
                 controller: 'LoginCtrl'
             }).
-            when('/Login', {
+            when('/Content/Login', {
                 templateUrl: 'home/home',
                 controller: 'LoginCtrl'
             }).
-            when('/teacher/update', {
+            when('/Content/teacher/update', {
                 templateUrl: 'teacher/TeacherRegister',
                 controller: 'RegisterTeacherCtrl'
             }).
-            when('/teacher/schedule', {
+            when('/Content/teacher/schedule', {
                 templateUrl: 'teacher/schedule',
                 controller: 'SheduleCtrl'
             }).
@@ -23,38 +23,38 @@ var app = angular.module('QRInfoApp', ['ngRoute'])
                 templateUrl: 'home/home',
                 controller: 'LoginCtrl'
             }).
-            when('/teachers/:id', {
+            when('/Content/teachers/:id', {
                 templateUrl: 'teacher/teacherdetails',
                 controller: 'TeacherDetailsCtrl'
             }).
-            when('/teachers/:id/:qrcode', {
+            when('/Content/teachers/:id/:qrcode', {
                 templateUrl: 'teacher/teacherdetails',
                 controller: 'TeacherDetailsCtrl'
             }).
-            when('/register', {
+            when('/Content/register', {
                 templateUrl: 'user/register',
                 controller: 'RegisterCtrl'
             }).
-            when('/Admin/QRCodes', {
+            when('/Content/Admin/QRCodes', {
                 templateUrl: 'administration/teachersCodes',
                 controller: 'LoginCtrl'
             }).
-            when('/Admin/Users', {
+            when('/Content/Admin/Users', {
                 templateUrl: 'administration/users',
                 controller: 'UsersCtrl'
             }).
-            when('/Admin', {
+            when('/Content/Admin', {
                 templateUrl: 'administration/adminpanel',
                 controller: 'LoginCtrl'
             }).
-            when('/Excel/:id', {
+            when('/Content/Excel/:id', {
                 templateUrl: 'Excel',
                 controller: 'SheduleCtrl'
             }).
-            when('/UploadImage/:id', {
+            when('/Content/UploadImage/:id', {
                 templateUrl: 'Teacher/uploadImage',
                 controller: 'RegisterTeacherCtrl'
             })
     }])
     .value('toastr', toastr)
-    .constant('baseUrl', 'http://univeritysystem.apphb.com');//http://qrinfo.apphb.com');//'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');
+    .constant('baseUrl', 'http://qrinformation.apphb.com');//http://qrinfo.apphb.com');//'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');

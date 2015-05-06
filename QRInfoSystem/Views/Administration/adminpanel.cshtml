@@ -1,4 +1,10 @@
-﻿<div class="admin">
+﻿<div class="section-title center">
+    <h2>Admin<strong>panel</strong></h2>
+    <div class="line">
+        <hr>
+    </div>
+</div>
+<div class="admin">
     <div class="left" ng-controller="RegisterTeacherCtrl" ng-hide="!isAdmin">
         <div ng-include="'teacher/teacherregister'"></div>
         <div ng-hide="!isRegistered" class="register-form">

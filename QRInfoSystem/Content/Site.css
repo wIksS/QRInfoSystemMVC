@@ -9,7 +9,6 @@
 
 
 .table-container {
-    margin: 50px 150px;
     text-align: center;
 }
 
@@ -38,7 +37,7 @@ table, td, th {
 .fullPageDatePicker {
     display: inline-block;
     width: 500px;
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
 /*.from, .to {
@@ -52,12 +51,14 @@ table, td, th {
 .to {
     margin-left: 8%;
 }*/
-.from,.to{
-    margin-bottom:30px
+.from, .to {
+    margin-bottom: 30px;
 }
-.from span, .to span{
-    text-align:right;
-}
+
+    .from span, .to span {
+        text-align: right;
+    }
+
 .shedule-input {
     display: inline-block;
     width: 200px;
@@ -98,10 +99,10 @@ table, td, th {
         width: 80%;
     }
 
-.left-table {
+/*.left-table {
     min-width: 500px;
     max-width: 5000px;
-}
+}*/
 
 .down {
     height: 550px;
@@ -305,15 +306,21 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
-.details-img{
-    margin-left:15px
+
+.details-img {
+    margin-left: 15px;
 }
 
-#admin-table td{
-    max-width:123px;
+#admin-table td {
+    max-width: 123px;
     word-wrap: break-word;
 }
-#search-container{
-    width:250px;
-    margin-top:10px;
+
+#search-container {
+    width: 250px;
+    margin-top: 10px;
+}
+
+#admin-table{
+    width:100px;
 }

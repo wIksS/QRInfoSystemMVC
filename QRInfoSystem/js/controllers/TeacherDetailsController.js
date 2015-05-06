@@ -59,4 +59,8 @@ app.controller('TeacherDetailsCtrl', ['$scope', '$location', '$routeParams', 'au
                 errorHandler.handle(err);
             });
     }
+
+    $scope.$on('$viewContentLoaded', function () {
+        moveScrollToContent();
+    });
 }]);

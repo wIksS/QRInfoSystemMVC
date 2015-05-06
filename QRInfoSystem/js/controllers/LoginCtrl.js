@@ -43,6 +43,7 @@ app.controller('LoginCtrl', ['$scope', '$rootScope','auth', 'identity', 'notifie
 
                     notifier.success('Successful login !');
                     $location.path('/teachers');
+                    initLinksAnimations();
                 });               
             },
             function(err){
@@ -60,6 +61,7 @@ app.controller('LoginCtrl', ['$scope', '$rootScope','auth', 'identity', 'notifie
         $scope.user.password = '';
         currentTeacher.deleteSessionTeacher();
         notifier.success('Successful logout');
+        initLinksAnimations();
     }
 
     $scope.goToSearchTeachers = function () {
@@ -70,4 +72,14 @@ app.controller('LoginCtrl', ['$scope', '$rootScope','auth', 'identity', 'notifie
 
         $rootScope.$broadcast("searchTeacher", { search: search.value });
     }
+    $scope.$on('$viewContentLoaded', function () {
+        $('ul.nav a').on('click', function () {
+            $('ul.nav a').parent().removeClass('active');
+            $(this).parent().addClass('active');
+        })
+    });
+
+    $scope.$on('$viewContentLoaded', function () {
+        moveScrollToContent();
+    });
 }]);

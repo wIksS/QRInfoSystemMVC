@@ -13,4 +13,8 @@ app.controller('RegisterCtrl', ['$scope', '$location', 'auth', 'identity', 'noti
                 errorHandler.handle(err);
             });
     }
+
+    $scope.$on('$viewContentLoaded', function () {
+        moveScrollToContent();
+    });
 }])

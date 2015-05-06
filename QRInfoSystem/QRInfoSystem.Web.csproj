@@ -234,8 +234,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\design.css" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\owl.theme.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -254,7 +257,9 @@
     <Content Include="js\controllers\TeacherCtrl.js" />
     <Content Include="js\controllers\TeacherDetailsController.js" />
     <Content Include="js\controllers\UsersCtrl.js" />
+    <Content Include="js\directives\ngLastRepeat.js" />
     <Content Include="js\directives\search.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="js\services\account\auth.js" />
     <Content Include="js\services\account\identity.js" />
     <Content Include="js\services\account\usersService.js" />
@@ -1138,6 +1143,7 @@
     <Content Include="Scripts\jquery\jquery-ui.js" />
     <Content Include="Scripts\jquery\jquery.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\qrcode.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

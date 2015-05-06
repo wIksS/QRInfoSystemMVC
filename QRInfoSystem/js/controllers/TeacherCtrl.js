@@ -38,8 +38,9 @@ app.controller('TeacherCtrl', ['$scope','$rootScope', '$location', 'auth', 'iden
         });
 
     $scope.showTeacher = function (id) {
-        $location.path('/teachers/' + id);
+        $location.path('/Content/teachers/' + id);
     }
+
     $scope.isLogged = identity.isLogged();
     $scope.isAdmin = identity.isAdmin();
 
@@ -113,10 +114,34 @@ app.controller('TeacherCtrl', ['$scope','$rootScope', '$location', 'auth', 'iden
     }
 
     $scope.redirectToExcel = function (teacherId) {
-        $location.path('/Excel/' + teacherId);
+        $location.path('/Content/Excel/' + teacherId);
     }
 
     $scope.redirectToImageUpload = function (teacherId) {
-        $location.path('/UploadImage/' + teacherId);
+        $location.path('/Content/UploadImage/' + teacherId);
     }
+
+    $scope.$on('onRepeatLast', function (scope, element, attrs) {
+        $("#teachers-carousels").owlCarousel({
+            navigation: false, // Show next and prev buttons
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            autoHeight: true,
+            itemsCustom: [
+                          [0, 1],
+                          [450, 2],
+                          [600, 2],
+                          [700, 2],
+                          [1000, 4],
+                          [1200, 4],
+                          [1400, 4],
+                          [1600, 4]
+            ],
+        });
+    });
+
+    $scope.$on('$viewContentLoaded', function () {
+        moveScrollToContent();
+    });
+
 }]);

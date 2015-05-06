@@ -1,33 +1,73 @@
 ﻿<!doctype html>
 <html lang="en" ng-app="QRInfoApp">
 <head>
+    <title>QR Info</title>
     <link rel="shortcut icon" href="/content/favicon.ico" />
     @Styles.Render("~/Content/css")
 
 </head>
 <body>
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">QR Teacher Info</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <div ng-include="'user/login'"></div>
+    <nav id="menu" class="navbar navbar-default navbar-fixed-top on">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">QRInfoSystem</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div ng-include="'user/login'"></div>
+                @*<ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#tf-home" class="page-scroll">Home</a></li>
+                        <li><a data-scroll href="#teachers" class="page-scroll">Teachers</a></li>
+                        <li><a data-scroll href="#Admin" class="page-scroll">Team</a></li>
+                        <li><a data-scroll href="#services" class="page-scroll">Services</a></li>
+                        <li><a data-scroll href="#tf-contact" class="page-scroll">Contact</a></li>
+                    </ul>*@
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div id="teachers" class="text-center black-background">
+        <div class="">
+            <div class="container">
+                <div ng-include="'teacher/teachers'"></div>
+            </div>
         </div>
     </div>
-    <div ng-view></div>
 
-    <div class="panel-footer navbar-fixed-bottom small">
-        <footer class="text-center">
-            <a href='https://github.com/wIksS' target='_blank'>Viktor Dakov © 2014,</a>
-            <br />
-            <a href='https://github.com/wIksS/OnlineStore' target='_blank'>Open Source Project at GitHub</a>
-        </footer>
+    <div id="Content" class="text-center">
+        <div class="white-background">
+            <div class="container" ng-view>
+            </div>
+        </div>
     </div>
+
+    @*<div class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">QR Teacher Info</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <div ng-include="'user/login'"></div>
+            </div>
+        </div>*@
+
+    @*<div class="panel-footer navbar-fixed-bottom small">
+            <footer class="text-center">dds
+                <a href='https://github.com/wIksS' target='_blank'>Viktor Dakov © 2014,</a>
+                <br />
+                <a href='https://github.com/wIksS/OnlineStore' target='_blank'>Open Source Project at GitHub</a>
+            </footer>
+        </div>*@
 
     <script src="scripts/jquery/jquery.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
@@ -44,66 +84,66 @@
 
 
 @*<!doctype html>
-<html lang="en" ng-app="QRInfoApp">
-<head>
-    <link href="content/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../content/jquery-ui.css" />
-    <link rel="stylesheet" href="../content/toastr.min.css" />
-    <link href="scripts/calendar/fullcalendar.css" rel="stylesheet" />
-    <link href="scripts/glDatePicker/styles/glDatePicker.default.css" rel="stylesheet" />
-    <link href="content/site.css" rel="stylesheet">
-</head>
-<body>
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">QR Teacher Info</a>
+    <html lang="en" ng-app="QRInfoApp">
+    <head>
+        <link href="content/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../content/jquery-ui.css" />
+        <link rel="stylesheet" href="../content/toastr.min.css" />
+        <link href="scripts/calendar/fullcalendar.css" rel="stylesheet" />
+        <link href="scripts/glDatePicker/styles/glDatePicker.default.css" rel="stylesheet" />
+        <link href="content/site.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">QR Teacher Info</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <div ng-include="'user/login'"></div>
+            </div>
         </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <div ng-include="'user/login'"></div>
-        </div>
-    </div>
-    <div ng-view></div>
-    <hr class="col-lg-12" />
-    <footer class="text-center col-lg-12" ng-cloak>
-        <strong><a href="http://tusmail.tu-sofia.bg/">Email</a></strong>
-        <br>
-        <strong><a href="http://career.tu-sofia.bg/">Career</a></strong>
-        <br />
-    </footer>
-    <hr class="col-lg-12" />
-    <script src="scripts/angular/angular.js"></script>
-    <script src="scripts/angular/angular-route.js"></script>
-    <script src="scripts/jquery/jquery.min.js"></script>
-    <script src="scripts/jquery/jquery-ui.js"></script>
-    <script src="scripts/jquery/jquery-timepicker.js"></script>
-    <script src="scripts/bootstrap.js"></script>
-    <script src="scripts/toastr/toastr.js"></script>
-    <script src="scripts/qrcode.js"></script>
-    <script src="scripts/glDatePicker/glDatePicker.js"></script>
-    <script src="scripts/calendar/fullcalendar-2.1.1/lib/moment.min.js"></script>
-    <script src="scripts/calendar/fullcalendar.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers/LoginCtrl.js"></script>
-    <script src="js/services/account/auth.js"></script>
-    <script src="js/services/account/identity.js"></script>
-    <script src="js/services/httpRequester.js"></script>
-    <script src="js/services/notifier.js"></script>
-    <script src="js/services/teacher/currentTeacher.js"></script>
-    <script src="js/controllers/RegisterCtrl.js"></script>
-    <script src="js/services/objectToQueryString.js"></script>
-    <script src="js/controllers/HomeCtrl.js"></script>
-    <script src="js/controllers/RegisterTeacherCtrl.js"></script>
-    <script src="js/controllers/TeacherDetailsController.js"></script>
-    <script src="js/services/teacher/teacherService.js"></script>
-    <script src="js/controllers/SheduleController.js"></script>
-    <script src="js/controllers/QRCodeCtrl.js "></script>
-    <script src="js/controllers/TeacherCtrl.js"></script>
-</body>
-</html>*@
+        <div ng-view></div>
+        <hr class="col-lg-12" />
+        <footer class="text-center col-lg-12" ng-cloak>
+            <strong><a href="http://tusmail.tu-sofia.bg/">Email</a></strong>
+            <br>
+            <strong><a href="http://career.tu-sofia.bg/">Career</a></strong>
+            <br />
+        </footer>
+        <hr class="col-lg-12" />
+        <script src="scripts/angular/angular.js"></script>
+        <script src="scripts/angular/angular-route.js"></script>
+        <script src="scripts/jquery/jquery.min.js"></script>
+        <script src="scripts/jquery/jquery-ui.js"></script>
+        <script src="scripts/jquery/jquery-timepicker.js"></script>
+        <script src="scripts/bootstrap.js"></script>
+        <script src="scripts/toastr/toastr.js"></script>
+        <script src="scripts/qrcode.js"></script>
+        <script src="scripts/glDatePicker/glDatePicker.js"></script>
+        <script src="scripts/calendar/fullcalendar-2.1.1/lib/moment.min.js"></script>
+        <script src="scripts/calendar/fullcalendar.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers/LoginCtrl.js"></script>
+        <script src="js/services/account/auth.js"></script>
+        <script src="js/services/account/identity.js"></script>
+        <script src="js/services/httpRequester.js"></script>
+        <script src="js/services/notifier.js"></script>
+        <script src="js/services/teacher/currentTeacher.js"></script>
+        <script src="js/controllers/RegisterCtrl.js"></script>
+        <script src="js/services/objectToQueryString.js"></script>
+        <script src="js/controllers/HomeCtrl.js"></script>
+        <script src="js/controllers/RegisterTeacherCtrl.js"></script>
+        <script src="js/controllers/TeacherDetailsController.js"></script>
+        <script src="js/services/teacher/teacherService.js"></script>
+        <script src="js/controllers/SheduleController.js"></script>
+        <script src="js/controllers/QRCodeCtrl.js "></script>
+        <script src="js/controllers/TeacherCtrl.js"></script>
+    </body>
+    </html>*@
 
 

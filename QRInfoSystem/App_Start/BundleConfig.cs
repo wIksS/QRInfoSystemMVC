@@ -35,7 +35,9 @@ namespace QRInfoSystem.Web
                         "~/Scripts/qrcode.js",
                         "~/Scripts/calendar/fullcalendar-2.1.1/lib/moment.min.js",
                         "~/Scripts/calendar/fullcalendar.js",
-                        "~/Scripts/glDatePicker/glDatePicker.js"));
+                        "~/Scripts/glDatePicker/glDatePicker.js",
+                        "~/Scripts/owl.carousel.js",
+                        "~/Scripts/main.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -52,7 +54,10 @@ namespace QRInfoSystem.Web
                       "~/Content/jquery-ui.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/toastr.css",
-                      "~/Content/site.css"));
+                      "~/Content/owl.carousel.css",
+                      "~/Content/owl.theme.css",
+                      "~/Content/site.css",
+                      "~/Content/design.css"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery/jquery-{version}.js"));

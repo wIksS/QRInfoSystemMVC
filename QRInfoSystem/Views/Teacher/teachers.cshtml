@@ -1,31 +1,21 @@
 ﻿<div class="table-container" ng-controller="TeacherCtrl">
-    <h2>Teachers</h2>
-    <br><br>
-    <div class="teacher-container col-md-4" ng-repeat="teacher in teachers | filter: searchFunc ">
-        <div class=" container-fluid well span6">
-            <div class="row-fluid">
-                <div class="span2">
-                    <img width="80px" height="80px" src="{{teacher.ImagePath}}" ng-if="!!teacher.ImagePath" class="img-circle">
-                    <img width="80px" height="80px" src="/images/unknown.jpg" ng-if="!teacher.ImagePath" class="img-circle">
-                </div>
-
-                <div class="span8">
+    <div class="section-title center">
+        <h2>Public <strong>teachers</strong></h2>
+        <div class="line">
+            <hr>
+        </div>
+    </div>
+    <div id="teachers-carousels" class="owl-carousel owl-theme row">
+        <div class="item" ng-repeat="teacher in teachers" on-last-repeat>
+            <div class="thumbnail">
+                <img ng-click="showTeacher(teacher.Id)" alt="..." src="{{teacher.ImagePath}}" ng-if="!!teacher.ImagePath" class="img-circle team-img">
+                <img ng-click="showTeacher(teacher.Id)" alt="..." src="/images/unknown.jpg" ng-if="!teacher.ImagePath" class="img-circle team-img">
+                <div class="caption">
                     <h3>{{teacher.FirstName}} {{teacher.LastName}}</h3>
-                    <h6>Email: {{teacher.Email}}</h6>
-                    <h6>Phone: {{teacher.Phone}}</h6>
-                    <h6>Title: {{teacher.Title}}</h6>
-                    <h6><a ng-click="showTeacher(teacher.Id)">More... </a></h6>
-                </div>
-
-                <div class="span2">
-                    <div class="btn-group">
-                        <a class="btn btn-info" ng-click="showTeacher(teacher.Id)">
-                            Schedule
-                            <span class="icon-cog icon-white"></span><span class="caret"></span>
-                        </a>
-                    </div>
+                    <p>{{teacher.Title}}</p>
+                    <p>Email: {{teacher.Email}} <br />Phone: {{teacher.Phone}}</p>
                 </div>
             </div>
-        </div>
+        </div>
     </div>
 </div>

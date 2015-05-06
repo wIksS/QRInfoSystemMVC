@@ -1,29 +1,35 @@
-﻿<div class="table-title">
-    <h3>QR Codes</h3>
+﻿<div id="QRCodes" class="text-center">
+    <div class="white-background">
+        <div class="container">
+            <div class="table-title">
+                <h3>QR Codes</h3>
+            </div>
+            <table class="table-fill" ng-controller="TeacherCtrl">
+                <thead>
+                    <tr>
+                        <th class="text-left">Full Name</th>
+                        <th class="text-left">QR Code</th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
+                    <tr ng-repeat="teacher in teachers" ng-click="getShedule(teacher);">
+                        <td class="text-center">
+                            {{teacher.FirstName}} {{teacher.LastName}}
+                            <br />
+                            <img width="120px" height="120px" src="{{teacher.ImagePath}}" ng-if="!!teacher.ImagePath" class="img-circle">
+                            <img width="120px" height="120px" src="/images/unknown.jpg" ng-if="!teacher.ImagePath" class="img-circle">
+                        </td>
+                        <td class="text-left">
+                            <div id='qrcode{{teacher.Id}}' ng-init="generate(teacher.Id)"></div>
+                        </td>
+                    </tr>
+                    <tr ng-if="teacher.length == 0">
+                        <td class="text-left" colspan="3">
+                            <h1>No teachers registered !</h1>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-<table class="table-fill" ng-controller="TeacherCtrl">
-    <thead>
-        <tr>
-            <th class="text-left">Full Name</th>
-            <th class="text-left">QR Code</th>
-        </tr>
-    </thead>
-    <tbody class="table-hover">
-        <tr ng-repeat="teacher in teachers" ng-click="getShedule(teacher);">
-            <td class="text-center">
-            {{teacher.FirstName}} {{teacher.LastName}}
-                <br />
-                <img width="120px" height="120px" src="{{teacher.ImagePath}}" ng-if="!!teacher.ImagePath" class="img-circle">
-                <img width="120px" height="120px" src="/images/unknown.jpg" ng-if="!teacher.ImagePath" class="img-circle">
-            </td>
-            <td class="text-left">
-                <div id='qrcode{{teacher.Id}}' ng-init="generate(teacher.Id)"></div>
-            </td>
-        </tr>
-        <tr ng-if="teacher.length == 0">
-            <td class="text-left" colspan="3">
-                <h1>No teachers registered !</h1>
-            </td>
-        </tr>
-    </tbody>
-</table>

@@ -19,4 +19,8 @@ app.controller('AdminCtrl', ['$scope', '$location', '$routeParams', 'auth', 'ide
     if (!$scope.isAdmin) {
         $location.path('/');
     }
+
+    $scope.$on('$viewContentLoaded', function () {
+        moveScrollToContent();
+    });
 }]);

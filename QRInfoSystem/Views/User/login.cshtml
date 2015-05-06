@@ -1,32 +1,38 @@
 <div ng-controller="LoginCtrl">
-    <ul class="nav navbar-nav" ng-hide="!isLogged">
-        <li ng-hide="!isTeacher">
-            <a href="/#/teacher/update">Upade your data</a>
-        </li>
-        <li ng-hide="!isTeacher">
-            <a href="/#/teacher/schedule">Upade your schedule</a>
-        </li>
-        <li ng-hide="!isAdmin">
-            <a href="/#/Admin">Admin Panel</a>
-        </li>
-        <li ng-hide="!isAdmin">
-            <a href="/#/Admin/QRCodes">QR Codes</a>
-        </li>
-        <li ng-hide="!isAdmin">
-            <a href="/#/Admin/Users">Users</a>
-        </li>
-    </ul>
     <ul ng-hide="!isLogged" class="nav navbar-nav navbar-right">
-        <li search id="search-container">
-        </li>
-        <li>            
+        @*<li search id="search-container">
+        </li>*@
+        <li>
             <a href="/#/details">Hello, {{username}}</a>
         </li>
         <li>
-            <a class="btn btn-default" ng-click="logout()">Logout</a>
+            <a class="btn btn-primary" ng-click="logout()">Logout</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-hide="!isLogged">
+        <li class="active">
+            <a href="/#/teachers">Teachers</a>
+        </li>
+        <li ng-hide="!isTeacher">
+            <a href="/#/Content/teacher/update">Upade your data</a>
+        </li>
+        <li ng-hide="!isTeacher">
+            <a href="/#/Content/teacher/schedule">Upade your schedule</a>
+        </li>
+        <li ng-hide="!isAdmin">
+            <a href="#/Content/Admin" class="page-scroll">Admin Panel</a>
+        </li>
+        <li ng-hide="!isAdmin">
+            <a href="#/Content/Admin/QRCodes">QR Codes</a>
+        </li>
+        <li ng-hide="!isAdmin">
+            <a href="#/Content/Admin/Users">Users</a>
         </li>
     </ul>
     <ul ng-hide="isLogged" class="nav navbar-nav navbar-right">
+        <li class="active">
+            <a href="/#/teachers">Teachers</a>
+        </li>
         <li>
             <form class="navbar-form navbar-left">
                 <div class="form-group">
@@ -34,7 +40,7 @@
                     <input type="password" class="form-control" required="" placeholder="Password" ng-model="user.password">
                 </div>
                 <button ng-click="login(user)" class="btn btn-default">Admin Panel</button>
-                <a href="/#/register" class="btn-default btn">Register</a>
+                <a href="/#/Content/register" class="btn-default btn">Register</a>
             </form>
         </li>
     </ul>

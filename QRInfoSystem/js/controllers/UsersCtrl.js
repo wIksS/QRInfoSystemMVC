@@ -59,5 +59,9 @@
                 }
             );
         }
+
+        $scope.$on('$viewContentLoaded', function () {
+            moveScrollToContent();
+        });
     }
 ]);

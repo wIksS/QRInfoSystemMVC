@@ -14,4 +14,8 @@ app.controller('HomeCtrl',['$scope','$location','auth','identity','notifier', fu
     $scope.getId = function () {
 
     }
+
+    $scope.$on('$viewContentLoaded', function () {
+        moveScrollToContent();
+    });
 }]);
