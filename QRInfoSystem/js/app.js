@@ -1,7 +1,8 @@
 'use strict';
 
 var app = angular.module('QRInfoApp', ['ngRoute'])
-    .config(['$routeProvider', function ($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider)
+    {
         $routeProvider.
             when('/', {
                 templateUrl: 'home/home',
@@ -57,4 +58,4 @@ var app = angular.module('QRInfoApp', ['ngRoute'])
             })
     }])
     .value('toastr', toastr)
-    .constant('baseUrl', 'http://qrinformation.apphb.com');//http://qrinfo.apphb.com');//'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');
+    .constant('baseUrl', 'http://qrinformation.apphb.com/');//'http://qrinformation.apphb.com');//http://qrinfo.apphb.com');//'http://localhost:1763');//'http://localhost:6364');//'http://QRInfoSystem.Web.Web.Web.Webserver.apphb.com/');
